@@ -1,0 +1,42 @@
+<div ng-controller="WidgetTableController as controller">
+
+    <totvs-widget>
+
+        <totvs-widget-header
+            title="Exemplo widget #3"
+            help="http://tdn.totvs.com/display/tec/Totvs+Widget">Julho/2016
+        </totvs-widget-header>
+
+        <totvs-widget-body>
+
+            <totvs-table items="controller.listOfcountry" items-as="country">
+
+                <column title="ID">
+                    {{country.id}}
+                </column>
+                <column title="Sigla">
+                    {{country.initial}}
+                </column>
+                <column title="Nome">
+                    {{country.name}}
+                </column>
+
+            </totvs-table>
+
+        </totvs-widget-body>
+
+        <totvs-widget-footer>
+
+            <totvs-widget-footer-body>
+                <strong>Valor total: </strong> R$ 500,00
+            </totvs-widget-footer-body>
+
+            <totvs-widget-footer-actions>
+                <action link=''>Detalhar</action>
+            </totvs-widget-footer-actions>
+
+        </totvs-widget-footer>
+
+    </totvs-widget>
+
+</div>

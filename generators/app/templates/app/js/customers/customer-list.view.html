@@ -1,0 +1,148 @@
+<totvs-page type="list">
+
+    <totvs-page-navbar>
+
+        <totvs-page-breadcrumb>
+            <breadcrumb link="#/">
+                <span class="hidden-xs">{{ ::'l-home' | i18n : [] : 'js/customers' }}</span>
+                <span class="glyphicon glyphicon-home hidden-sm hidden-md hidden-lg"></span>
+            </breadcrumb>
+            <breadcrumb>
+                <span>{{ ::'l-customer' | i18n : [] : 'js/customers' }}</span>
+            </breadcrumb>
+        </totvs-page-breadcrumb>
+
+        <totvs-page-header>
+
+            <totvs-page-header-title
+                title="{{ ::'l-customers' | i18n : [] : 'js/customers' }}"
+                total="{{ controller.recordsCount }}">
+            </totvs-page-header-title>
+
+            <totvs-page-header-operation>
+
+                <totvs-page-header-operation-action
+                    limit-primary-action="3"
+                    items="controller.records"
+                    items-as="customer">
+                    <action link="#/customers/new" icon="glyphicon-plus">
+                        {{ ::'btn-add' | i18n }}
+                    </action>
+                </totvs-page-header-operation-action>
+
+                <totvs-page-header-operation-filter
+                    placeholder="{{ ::'l-search' | i18n }}"
+                    ng-submit="controller.search()"
+                    ng-model="controller.searchText"
+                    advanced-search="controller.openAdvancedSearch">
+                </totvs-page-header-operation-filter>
+
+            </totvs-page-header-operation>
+
+            <totvs-page-disclaimers
+                disclaimer-list="controller.disclaimers"
+                ng-click="controller.removeDisclaimer">
+            </totvs-page-disclaimers>
+
+        </totvs-page-header>
+
+    </totvs-page-navbar>
+
+    <totvs-page-content>
+
+        <totvs-page-alert
+            ng-if="controller.recordsCount === 0"
+            type="info"
+            message="{{ ::'l-msg-not-found' | i18n }}">
+        </totvs-page-alert>
+
+        <totvs-list-item ng-repeat="customer in controller.records track by customer.id">
+
+            <totvs-list-item-header>
+                <totvs-list-item-title
+                    title="{{ ::customer.id }} - {{ ::customer.name }}"
+                    link="#/customers/detail/{{ ::customer.id }}">
+                </totvs-list-item-title>
+
+                <totvs-list-item-action limit-primary-action="2">
+                    <action link="#/customers/edit/{{ ::customer.id }}" icon="glyphicon-pencil">
+                        {{ ::'btn-edit' | i18n }}
+                    </action>
+                    <action ng-click="controller.onRemove(customer)" icon="glyphicon-trash">
+                        {{ ::'btn-remove' | i18n }}
+                    </action>
+                </totvs-list-item-action>
+            </totvs-list-item-header>
+
+            <totvs-list-item-content>
+                <totvs-list-item-info
+                    title="{{ ::'l-register' | i18n : [] : 'js/customers'}}"
+                    value="{{ ::customer.createdAt | date:'dd/MM/yyyy' }}">
+                </totvs-list-item-info>
+
+                <totvs-list-item-info
+                    title="{{ ::'l-updated' | i18n : [] : 'js/customers' }}"
+                    value="{{ ::customer.updatedAt | date:'dd/MM/yyyy hh:mm' }}">
+                </totvs-list-item-info>
+
+                <totvs-list-item-info title="{{ ::'l-email' | i18n : [] : 'js/customers' }}">
+                    <totvs-editable
+                        value="{{ ::customer.email }}"
+                        on-complete="controller.applyEdit(editable.newValue, 'email', customer)">
+                        <field
+                            type="input"
+                            class="col-md-12"
+                            ng-model="customer.email"
+                            canclean
+                            label="{{ ::'l-email' | i18n : [] : 'js/customers' }}">
+                        </field>
+                    </totvs-editable>
+                </totvs-list-item-info>
+
+                <totvs-list-item-info title="{{ ::'l-phone' | i18n : [] : 'js/customers' }}">
+                    <totvs-editable
+                        value="{{ ::customer.phone | mask:'(99) 9999-9999' }}"
+                        on-complete="controller.applyEdit(editable.newValue, 'phone', customer)">
+                        <field
+                            type="input"
+                            class="col-md-12"
+                            ng-model="customer.phone"
+                            canclean
+                            label="{{ ::'l-phone' | i18n : [] : 'js/customers' }}"
+                            ui-mask="(99) 9999-9999">
+                        </field>
+                    </totvs-editable>
+                </totvs-list-item-info>
+            </totvs-list-item-content>
+
+            <totvs-list-item-content-detail>
+                <totvs-list-item-info
+                    title="{{ ::'l-doc-cpf' | i18n : [] : 'js/customers' }}"
+                    value="{{ ::customer.doc_cpf | mask:'999.999.999-99' }}">
+                </totvs-list-item-info>
+
+                <totvs-list-item-info
+                    title="{{ ::'l-doc-rg' | i18n : [] : 'js/customers' }}"
+                    value="{{ ::customer.doc_rg }}">
+                </totvs-list-item-info>
+
+                <totvs-list-item-info
+                    title="{{ ::'l-birthday' | i18n : [] : 'js/customers' }}"
+                    value="{{ ::customer.birthday | date:'dd/MM/yyyy' }}">
+                </totvs-list-item-info>
+
+                <totvs-list-item-info
+                    title="{{ ::'l-note' | i18n : [] : 'js/customers' }}"
+                    value="{{ ::customer.note.length > 50 ? (customer.note | limitTo:50) + '...' : customer.note }}">
+                </totvs-list-item-info>
+            </totvs-list-item-content-detail>
+        </totvs-list-item>
+
+        <totvs-list-pagination
+            ng-if="controller.records.length < controller.recordsCount && controller.records.length"
+            ng-click="controller.loadRecords(true)">
+        </totvs-list-pagination>
+
+    </totvs-page-content>
+
+</totvs-page>

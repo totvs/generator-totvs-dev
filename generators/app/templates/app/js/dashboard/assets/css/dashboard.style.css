@@ -1,0 +1,34 @@
+.dashboard-on-drag{
+    background-color: #E0E5EA;
+    border-radius: 5px;
+}
+
+.dashboard-drag-zindex{
+    z-index: 1000;
+    position: relative;
+}
+
+.dashboard-portlet{
+    padding-bottom: 20px;
+}
+
+.dashboard-portlet-config{
+    padding-bottom: 20px;
+}
+
+.dashboard-portlet-header-config{
+    padding-bottom: 0px !important;
+}
+
+.dashboard-painel-no-border{
+    border: 0px !important;
+    background-color: #E7E9EC !important
+}
+
+.panel {
+    margin-bottom: 0px;
+}
+
+.disabled-div {
+    pointer-events: none;
+}

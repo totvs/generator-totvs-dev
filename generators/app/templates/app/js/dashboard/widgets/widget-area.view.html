@@ -1,0 +1,37 @@
+<div ng-controller="WidgetAreaController as controller">
+
+    <totvs-widget>
+
+        <totvs-widget-header
+            title="Exemplo widget #1"
+            help="http://tdn.totvs.com/display/tec/Totvs+Widget">Julho/2016
+        </totvs-widget-header>
+
+        <totvs-widget-body>
+
+            <totvs-chart
+                t-title="Grafico Area"
+                t-title-position="top"
+                t-type-chart="area"
+                t-series="controller.series"
+                t-categories="controller.categories"
+                t-set-export="controller.setFnExport">
+            </totvs-chart>
+
+        </totvs-widget-body>
+
+        <totvs-widget-footer>
+
+            <totvs-widget-footer-body>
+                <strong>Valor total: </strong> R$ 999.999,00
+            </totvs-widget-footer-body>
+
+            <totvs-widget-footer-actions>
+                <action ng-click="controller.exportToPng()">Exportar</action>
+            </totvs-widget-footer-actions>
+
+        </totvs-widget-footer>
+
+    </totvs-widget>
+
+</div>

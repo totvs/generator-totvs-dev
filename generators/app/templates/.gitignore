@@ -1,0 +1,13 @@
+# Dependency directory
+node_modules/
+app/js/libs/
+dist/
+out/
+test/
+script/
+
+# other
+.tmp
+
+# files
+.brackets.json

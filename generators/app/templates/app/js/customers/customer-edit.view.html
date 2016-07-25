@@ -1,0 +1,168 @@
+<totvs-page type="edit">
+
+	<totvs-page-navbar>
+
+		<totvs-page-breadcrumb>
+            <breadcrumb link="#/">
+                <span class="hidden-xs">{{ ::'l-home' | i18n : [] : 'js/customers' }}</span>
+                <span class="glyphicon glyphicon-home hidden-sm hidden-md hidden-lg"></span>
+            </breadcrumb>
+            <breadcrumb link="#/customers">
+                <span>{{ ::'l-customer' | i18n : [] : 'js/customers' }}</span>
+            </breadcrumb>
+
+			<breadcrumb>{{ controller.customer.id ? 'Edição:' : 'Novo cliente:' }} {{ controller.customer.name }}</breadcrumb>
+		</totvs-page-breadcrumb>
+
+		<totvs-page-header>
+			<totvs-page-header-title
+                title="{{ controller.customer.id ? controller.customer.name || 'Editando cliente' : controller.customer.name || 'Novo cliente' }}"
+                placeholder="{{ ::'l-customer' | i18n : [] : 'js/customers' }}">
+			</totvs-page-header-title>
+
+			<totvs-page-header-operation>
+				<totvs-page-header-operation-action>
+                </totvs-page-header-operation-action>
+			</totvs-page-header-operation>
+		</totvs-page-header>
+
+	</totvs-page-navbar>
+
+	<totvs-page-content>
+
+        <totvs-page-form name="frmCustomer">
+
+			<fieldset>
+
+				<field
+                    type="input"
+					class="col-lg-3 col-md-3 col-sm-3 col-xs-12"
+					ng-model="controller.customer.name"
+					required
+					label="{{ ::'l-name' | i18n : [] : 'js/customers' }}"
+                    focus>
+				</field>
+
+				<totvs-field
+                    totvs-datepicker
+                    class="col-lg-3 col-md-3 col-sm-3 col-xs-12"
+                    ng-model="controller.customer.birthday"
+                    label="{{ ::'l-birthday' | i18n : [] : 'js/customers' }}"
+                    canclean>
+				</totvs-field>
+
+                <field
+                    type="input"
+					class="col-lg-3 col-md-3 col-sm-3 col-xs-12"
+					ng-model="controller.customer.doc_cpf"
+					label="{{ ::'l-doc-cpf' | i18n : [] : 'js/customers' }}"
+                    ui-mask="999.999.999-99">
+				</field>
+
+				<field
+                    type="input"
+					class="col-lg-3 col-md-3 col-sm-3 col-xs-12"
+					label="{{ ::'l-doc-rg' | i18n : [] : 'js/customers' }}"
+					ng-model="controller.customer.doc_rg">
+				</field>
+
+                <field
+                    type="input"
+					class="col-lg-3 col-md-3 col-sm-3 col-xs-12"
+					label="{{ ::'l-email' | i18n : [] : 'js/customers' }}"
+				    ng-model="controller.customer.email">
+				</field>
+
+				<field
+                    type="input"
+					class="col-lg-3 col-md-3 col-sm-3 col-xs-12"
+					ng-model="controller.customer.phone"
+					label="{{ ::'l-phone' | i18n : [] : 'js/customers' }}"
+                    ui-mask="(99) 9999-9999">
+				</field>
+
+                <totvs-field
+                    totvs-datepicker
+				    class="col-lg-3 col-md-3 col-sm-3 col-xs-12"
+					ng-model="controller.customer.createdAt"
+					label="{{ ::'l-register' | i18n : [] : 'js/customers' }}"
+                    ng-disabled="true">
+				</totvs-field>
+
+				<totvs-field
+                    totvs-datepicker
+					class="col-lg-3 col-md-3 col-sm-3 col-xs-12"
+					ng-model="controller.customer.updatedAt"
+				    label="{{ ::'l-updated' | i18n : [] : 'js/customers' }}"
+                    ng-disabled="true">
+				</totvs-field>
+
+			</fieldset>
+
+			<fieldset>
+
+				<legend>{{ 'l-address' | i18n : [] : 'js/customers' }}</legend>
+
+				<field
+                    type="input"
+					class="col-lg-6 col-md-6 col-sm-6 col-xs-12"
+					label="{{ ::'l-address-street' | i18n : [] : 'js/customers' }}"
+					ng-model="controller.customer.address_street">
+				</field>
+
+				<field
+                    type="input"
+					class="col-lg-2 col-md-2 col-sm-2 col-xs-12"
+					label="{{ ::'l-address-number' | i18n : [] : 'js/customers' }}"
+					ng-model="controller.customer.address_number">
+				</field>
+
+                <field
+                    type="input"
+					class="col-lg-4 col-md-4 col-sm-4 col-xs-12"
+					label="{{ ::'l-address-district' | i18n : [] : 'js/customers' }}"
+					ng-model="controller.customer.address_district">
+				</field>
+
+				<field
+                    type="input"
+                    class="col-lg-4 col-md-4 col-sm-4 col-xs-12"
+					label="{{ ::'l-address-city' | i18n : [] : 'js/customers' }}"
+                    ng-model="controller.customer.address_city">
+				</field>
+
+                <field
+                    type="input"
+					class="col-lg-4 col-md-4 col-sm-4 col-xs-12"
+					ng-model="controller.customer.address_zip"
+					label="{{ ::'l-address-zip' | i18n : [] : 'js/customers' }}"
+                    ui-mask="99999-999">
+				</field>
+
+				<field
+                    type="input"
+					class="col-lg-4 col-md-4 col-sm-4 col-xs-12"
+					label="{{ ::'l-address-complement' | i18n : [] : 'js/customers' }}"
+					ng-model="controller.customer.address_complement">
+				</field>
+
+			</fieldset>
+
+            <fieldset>
+
+				<legend>{{ ::'l-note' | i18n : [] : 'js/customers' }}</legend>
+
+                <field
+                    type="textarea"
+                    rows=10
+					class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+				    label="{{ ::'l-note' | i18n : [] : 'js/customers' }}"
+					ng-model="controller.customer.note">
+				</field>
+
+            </fieldset>
+		</totvs-page-form>
+
+	</totvs-page-content>
+
+</totvs-page>

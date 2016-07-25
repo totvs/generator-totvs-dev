@@ -1,0 +1,174 @@
+<totvs-page type="detail">
+
+	<totvs-page-navbar>
+
+		<totvs-page-breadcrumb>
+            <breadcrumb link="#/">
+                <span class="hidden-xs">{{ ::'l-home' | i18n : [] : 'js/customers' }}</span>
+                <span class="glyphicon glyphicon-home hidden-sm hidden-md hidden-lg"></span>
+            </breadcrumb>
+            <breadcrumb link="#/customers">
+                <span>{{ ::'l-customer' | i18n : [] : 'js/customers' }}</span>
+            </breadcrumb>
+
+			<breadcrumb>Detalhe: {{ ::controller.customer.name }}</breadcrumb>
+		</totvs-page-breadcrumb>
+
+        <totvs-page-header>
+            <totvs-page-header-title title="{{ ::controller.customer.name }}"></totvs-page-header-title>
+
+            <totvs-page-header-operation>
+                <totvs-page-header-operation-action
+                    limit-primary-action="3"
+                    on-back-link="#/customers"
+                    on-edit-link="#/customers/edit/{{ ::controller.customer.id }}">
+				</totvs-page-header-operation-action>
+            </totvs-page-header-operation>
+        </totvs-page-header>
+
+    </totvs-page-navbar>
+
+	<totvs-page-content>
+		<totvs-page-detail>
+
+            <totvs-page-detail-info
+                class="col-xs-12 col-sm-6 col-md-3"
+                title="{{ ::'l-customer' | i18n : [] : 'js/customers' }}">
+                {{ controller.customer.id + ' - ' + controller.customer.name }}
+            </totvs-page-detail-info>
+
+            <totvs-page-detail-info
+                class="col-xs-12 col-sm-6 col-md-3"
+                title="{{ ::'l-birthday' | i18n : [] : 'js/customers' }}">
+                {{ ::controller.customer.birthday | date:'dd/MM/yyyy' }}
+            </totvs-page-detail-info>
+
+			<totvs-divider></totvs-divider>
+
+            <totvs-page-detail-info
+				class="col-xs-12 col-sm-6 col-md-6"
+				title="{{ ::'l-doc-cpf' | i18n : [] : 'js/customers' }}">
+                {{ ::controller.customer.doc_cpf | mask:'999.999.999-99' }}
+			</totvs-page-detail-info>
+
+			<totvs-page-detail-info
+				class="col-xs-12 col-sm-6 col-md-6"
+				title="{{ ::'l-doc-rg' | i18n : [] : 'js/customers' }}">
+                {{ ::controller.customer.doc_rg }}
+			</totvs-page-detail-info>
+
+            <totvs-group-content title="Mais detalhes">
+
+			<totvs-page-detail-info
+				class="col-xs-12 col-sm-6 col-md-3"
+				title="{{ ::'l-email' | i18n : [] : 'js/customers' }}">
+                <totvs-editable
+                    value="{{ ::controller.customer.email }}"
+                    on-complete="controller.applyEdit(editable.newValue, 'email')">
+                    <field
+                        type="input"
+                        class="col-md-12"
+                        ng-model="controller.customer.email"
+                        canclean
+                        label="{{ ::'l-email' | i18n : [] : 'js/customers' }}">
+                    </field>
+                </totvs-editable>
+			</totvs-page-detail-info>
+
+            <totvs-page-detail-info
+				class="col-xs-12 col-sm-6 col-md-3"
+				title="{{ ::'l-phone' | i18n : [] : 'js/customers' }}">
+                <totvs-editable
+                    value="{{ ::controller.customer.phone | mask:'(99) 9999-9999' }}"
+                    on-complete="controller.applyEdit(editable.newValue, 'phone')">
+                    <field
+                        type="input"
+                        class="col-md-12"
+                        ng-model="controller.customer.phone"
+                        canclean
+                        label="{{ ::'l-phone' | i18n : [] : 'js/customers' }}"
+                        ui-mask="(99) 9999-9999">
+                    </field>
+                </totvs-editable>
+			</totvs-page-detail-info>
+
+            <totvs-page-detail-info
+                class="col-xs-12 col-sm-6 col-md-3"
+                title="{{ ::'l-register' | i18n : [] : 'js/customers' }}">
+                {{ ::controller.customer.createdAt | date:'dd/MM/yyyy' }}
+            </totvs-page-detail-info>
+
+            <totvs-page-detail-info
+                class="col-xs-12 col-sm-6 col-md-3"
+                title="{{ ::'l-updated' | i18n : [] : 'js/customers' }}">
+                {{ ::controller.customer.updatedAt | date:'dd/MM/yyyy hh:mm' }}
+            </totvs-page-detail-info>
+
+            </totvs-group-content>
+
+			<totvs-tabset>
+                <totvs-tab heading="{{ ::'l-address' | i18n : [] : 'js/customers' }}">
+                    <totvs-page-detail>
+                        <totvs-page-detail-info
+                            class="col-lg-6 col-md-6 col-sm-6 col-xs-12"
+                            title="{{ ::'l-address-street' | i18n : [] : 'js/customers' }}"
+                            value="{{ ::controller.customer.address_street }}">
+                        </totvs-page-detail-info>
+
+                        <totvs-page-detail-info
+                            class="col-lg-6 col-md-6 col-sm-6 col-xs-12"
+                            title="{{ ::'l-address-number' | i18n : [] : 'js/customers' }}"
+                            value="{{ ::controller.customer.address_number }}">
+                        </totvs-page-detail-info>
+
+                        <totvs-page-detail-info
+                            class="col-lg-6 col-md-6 col-sm-6 col-xs-12"
+                            title="{{ ::'l-address-district' | i18n : [] : 'js/customers' }}"
+                            value="{{ ::controller.customer.address_district }}">
+                        </totvs-page-detail-info>
+
+                        <totvs-page-detail-info
+                            class="col-lg-6 col-md-6 col-sm-6 col-xs-12"
+                            title="{{ ::'l-address-city' | i18n : [] : 'js/customers' }}"
+                            value="{{ ::controller.customer.address_city }}">
+                        </totvs-page-detail-info>
+
+                        <totvs-page-detail-info
+                            class="col-lg-6 col-md-6 col-sm-6 col-xs-12"
+                            title="{{ ::'l-address-zip' | i18n : [] : 'js/customers' }}"
+                            value="{{ ::controller.customer.address_zip | mask:'99999-999' }}">
+                        </totvs-page-detail-info>
+
+                        <totvs-page-detail-info
+                            class="col-lg-6 col-md-6 col-sm-6 col-xs-12"
+                            title="{{ ::'l-address-complement' | i18n : [] : 'js/customers' }}"
+                            value="{{ ::controller.customer.address_complement }}">
+                        </totvs-page-detail-info>
+                    </totvs-page-detail>
+                </totvs-tab>
+                <totvs-tab heading="Financeiro">
+                    <totvs-page-detail>
+                        <totvs-page-detail-info
+                            class="col-lg-6 col-md-6 col-sm-6 col-xs-12"
+                            title="Em breve..."
+                            value="... dados financeiros">
+                        </totvs-page-detail-info>
+                    </totvs-page-detail>
+                </totvs-tab>
+                <totvs-tab heading="{{ ::'l-note' | i18n : [] : 'js/customers' }}">
+                    <totvs-page-detail>
+                        <totvs-page-detail-info
+                            class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                            title="{{ ::'l-note' | i18n : [] : 'js/customers' }}"
+                            value="{{ ::controller.customer.note }}">
+                        </totvs-page-detail-info>
+                    </totvs-page-detail>
+                </totvs-tab>
+
+            </totvs-tabset>
+
+		</totvs-page-detail>
+
+    </totvs-page-content>
+
+</totvs-page>

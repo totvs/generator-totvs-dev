@@ -1,0 +1,44 @@
+<totvs-page type="list">
+
+    <totvs-page-navbar>
+
+        <totvs-page-breadcrumb>
+
+            <breadcrumb link="#/">
+                <span class="hidden-xs">{{ ::'l-home' | i18n : [] : 'js/dashboard' }}</span>
+                <span class="glyphicon glyphicon-home hidden-sm hidden-md hidden-lg"></span>
+            </breadcrumb>
+
+            <breadcrumb>{{ ::controller.dashboard.name }}</breadcrumb>
+
+        </totvs-page-breadcrumb>
+
+        <totvs-page-header>
+
+            <totvs-page-header-title title="{{ ::controller.dashboard.header }}" settings="controller.settings()">
+            </totvs-page-header-title>
+
+        </totvs-page-header>
+
+    </totvs-page-navbar>
+
+    <totvs-page-content>
+
+        <div class="row">
+
+            <div class="col-xs-12">
+                <br>
+
+                <div class="dashboard-portlet col-md-12"
+                    ng-repeat="widget in controller.dashboard.widgets | orderBy : widget.position "
+                    ng-class="{'col-md-6':widget.size === 'half'}">
+                    <div ng-include="'js/dashboard/widgets/' + widget.source"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </totvs-page-content>
+
+</totvs-page>

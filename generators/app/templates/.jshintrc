@@ -1,0 +1,78 @@
+{
+    // Enforcing options
+    "bitwise": true,
+    "camelcase": true, //deprecated, ver jscs
+    "curly": true,
+    "eqeqeq": true,
+    "esversion": 5, //ECMAScript 5
+    "forin": true,
+    "freeze": true,
+    "funcscope": false,
+    //"futurehostile": true,
+    "globals": {
+        // AngularJS
+        "angular": false,
+        //jQuery
+        "$": false,
+        // Kendo UI
+        "kendo": false,
+        // Jasmine
+        "jasmine": false,
+        "describe": false,
+        "xdescribe": false,
+        "beforeEach": false,
+        "expect": false,
+        "it": false,
+        "xit": false,
+        "inject": false
+    },
+    "immed": true, //deprecated, ver jscs
+    "indent": 2, //deprecated, ver jscs
+    "iterator": false,
+    "latedef": "nofunc",
+    "maxcomplexity": 8,
+    "maxdepth": 5,
+    "maxerr": 50,
+    "maxlen": 120, //deprecated, ver jscs
+    "maxparams": 10,
+    "maxstatements": 40,
+    "newcap": true, //deprecated, ver jscs
+    "noarg": true,
+    "nocomma": true,
+    "noempty": true, //deprecated, ver jscs
+    "nonbsp": true,
+    "nonew": true,
+    "notypeof": false,
+    "quotmark": "single", //deprecated, ver jscs
+    "shadow": false,
+    "singleGroups": false,
+    "strict": true,
+    "undef": true,
+    "unused": true,
+
+    // Relaxing options
+    "asi": false,
+    "boss": false,
+    "debug": false,
+    "eqnull": true,
+    "esnext": false, //deprecated, ver ECMAScript 6
+    "evil": false,
+    "expr": false,
+    "lastsemic": false,
+    "laxbreak": false, //deprecated, ver jscs
+    "laxcomma": false,
+    "loopfunc": false,
+    "moz": false,
+    "multistr": false, //deprecated, ver jscs
+    "noyield": false,
+    "plusplus": false,
+    "proto": false,
+    "scripturl": false,
+    "sub": true, //deprecated, ver jscs
+    "supernew": false,
+    "validthis": false,
+
+    // Environments
+    "browser": true,
+    "node": true
+}

@@ -1,0 +1,40 @@
+{
+    "name": "<%= name %>",
+    "description": "<%= description %>",
+    "version": "<%= version %>",
+    "private": true,
+    "license": "Commercial",<% if (repository) { %>
+    "repository": "<%= repository %>",<% } %><% if (homepage) { %>
+    "homepage": "<%= homepage %>",<% } %>
+    "authors": [
+        "TOTVS S/A"
+    ],
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "devDependencies": {
+        "angular-mocks": "1.3.20"
+    },
+    "dependencies": {
+        "angular": "1.3.20",
+        "angular-animate": "1.3.20",
+        "angular-bootstrap": "^0.13.1",
+        "angular-hotkeys": "chieffancypants/angular-hotkeys#1.7.0",
+        "angular-i18n": "1.3.20",
+        "angular-nestable": "ng-nestable#^0.0.1",
+        "angular-resource": "1.3.20",<% if (!useUIRouter) { %>
+        "angular-route": "1.3.20",<% } %>
+        "angular-sanitize": "1.3.20",<% if (useUIRouter) { %>
+        "angular-ui-router": "0.2.15",<% } %>
+        "AngularJS-Toaster": "angularjs-toaster#^2.0.0",
+        "bootstrap": "^3.3.6",
+        "bootstrap-datepicker": "^1.6.1",<% if (createDashboard) { %>
+        "ngDraggable": "^0.1.8",<% } %>
+        "angular-ui-mask": "^1.8.6",
+        "angular-ui-select": "^0.18.1"
+    }
+}

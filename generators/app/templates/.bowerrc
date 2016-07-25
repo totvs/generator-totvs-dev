@@ -1,0 +1,5 @@
+{
+    "directory": "src/app/js/libs",
+    "proxy": "http://proxy-matriz.sp01.local:8080",
+    "https-proxy": "http://proxy-matriz.sp01.local:8080"
+}

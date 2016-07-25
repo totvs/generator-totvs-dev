@@ -1,0 +1,18 @@
+{
+    "name": "<%= name %>",
+    "description": "<%= description %>",
+    "version": "<%= version %>",
+    "private": true,
+    "license": "Commercial",<% if (repository) { %>
+    "repository": "<%= repository %>",<% } %><% if (homepage) { %>
+    "homepage": "<%= homepage %>",<% } %>
+    "author": {
+        "name": "TOTVS S/A"<% if (homepage) { %>,
+        "url": "<%= homepage %>"<% } %>
+    },
+    "scripts": {
+        "init": "npm install"
+    },
+    "dependencies": {},
+    "devDependencies": {}
+}

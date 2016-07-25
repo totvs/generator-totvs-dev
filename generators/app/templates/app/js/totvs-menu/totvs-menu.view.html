@@ -1,0 +1,252 @@
+<div class="container-fluid total-height">
+    <div class="row no-gutter total-height" id="menu-desktop">
+        <!-- MENU LATERAL -->
+        <div class="col-md-2 col-sm-3 col-xs-4 total-height" id="menu-lateral">
+            <!-- LOGOTIPO -->
+            <div class="menu-block hidden-sm hidden-xs" id="menu-logo">
+                 <img ng-src="{{ ::menu.srcLogo }}" >
+            </div>
+
+            <!-- ESTRUTURA DO MENU -->
+            <div class="menu-block disable-select" id="menu-structure">
+                <!-- RECENTES -->
+                <div class="menu-title" ng-click="menu.getRecents()"
+                    ng-class="{active: menu.selectedMenuGroup === menu.menuGroups.RECENTS}">
+                    <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                    &nbsp;{{ ::'recents' | i18n }}
+                </div>
+
+                <!-- FAVORITOS -->
+                <div class="menu-title" ng-click="menu.getFavorites()"
+                    ng-class="{active: menu.selectedMenuGroup === menu.menuGroups.FAVORITES}">
+                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                    &nbsp;{{ ::'favorites' | i18n }}
+                </div>
+
+                <!-- APLICATIVOS -->
+                <div class="menu-title" id="apps" ng-click="menu.loadMenu('apps')"
+                    ng-class="{active: menu.selectedMenuGroup === menu.menuGroups.APPLICATIONS}">
+                    <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+                    &nbsp;{{ ::'applications' | i18n }}
+                </div>
+
+                <div id="menu-applications">
+                    <div ng-repeat="app in menu.applications | orderBy:'seq'">
+                        <div class="menu-group" id="{{app.id}}" ng-click=" menu.loadModules(app)">
+                            {{ ::app.application }}
+                        </div>
+
+                        <div id="menu-modules" style="display: none">
+                            <div class="menu-item" id="{{app.codGroupAplicat + '.' + module.codModul}}"
+                                title="{{module.module}}"
+                                ng-repeat="module in app.modules | orderBy:'seq' track by $index"
+                                ng-click="menu.selectModule(module)"
+                                ng-class="{active: module === menu.selectedModule && menu.selectedTipProgram}">
+                                <span class="menu-item-text">{{ module.module }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROCESSOS -->
+                <div class="menu-title" id="prcs" ng-click="menu.loadMenu('prcs')"
+                    ng-class="{active: menu.selectedMenuGroup === menu.menuGroups.PROCESSES}">
+                    <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>&nbsp;{{ ::'processes' | i18n }}
+                </div>
+
+                <div id="menu-processes" style="display: none;">
+                    <div ng-repeat="prcs in menu.processes track by $index">
+                        <div class="menu-item" id="{{prcs.id}}" title="{{prcs.process}}"
+                            ng-click="menu.selectProcess(prcs)"
+                            ng-class="{active: prcs === menu.selectedProcess && !menu.selectedTipProgram}">
+                            <span class="menu-item-text">{{ prcs.process }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-10 col-sm-9 col-xs-8 total-height" id="menu-workspace">
+            <!-- CONTEÚDO DO MENU -->
+            <div class="menu-block" id="menu-content">
+
+                <!-- TÍTULO DO MÓDULO SELECIONADO -->
+                <div class="row" id="menu-module-title">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <h4 class="title hidden-xs">{{ menu.menuHeaderTitle }}</h4>
+                        <!-- mobile -->
+                        <h5 class="title visible-xs-block hidden-md hidden-lg" style="font-size: 16px;">
+                            {{ menu.menuHeaderTitle }}
+                        </h5>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- CAMPO DE FILTRO DE PROGRAMAS -->
+                    <div class="col-lg-6 col-lg-push-6 col-md-5 col-md-push-7 col-sm-12 col-xs-12" id="menu-search">
+                        <form>
+                            <div class="input-group">
+                                <input type="text" class="form-control no-clear-text" id="keywords"
+                                       ng-model="keywords" ng-maxlength="100" placeholder="{{ 'search' | i18n }}">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" ng-click="clearSearch()" type="button">
+                                        <i class="glyphicon glyphicon-remove"></i>
+                                    </button>
+                                    <button class="btn btn-default" type="submit"
+                                         ng-click="searchMenu(keywords,true)">
+                                        <i class="glyphicon glyphicon-search"></i>
+                                    </button>
+                                    <button class="btn btn-default" ng-click="openAdvancedFilter()" type="button">
+                                        <i class="glyphicon glyphicon-plus"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- ABAS DE TIPOS DE PROGRAMAS -->
+                    <div class="col-lg-6 col-lg-pull-6 col-md-7 col-md-pull-5 col-sm-12 col-xs-12" id="menu-selector">
+                        <div class="btn-group selectors-group" data-toggle="buttons">
+                            <!-- Tarefas -->
+                            <button class="btn btn-selector"
+                                ng-class="{active:menu.selectedTipProgram === 4}"
+                                ng-disabled="!menu.selectedTipProgram"
+                                ng-click="menu.selectTipProgram(4)">
+                                <input type="radio">{{ ::'tasks' | i18n }}&nbsp;
+                                <small class="hidden-xs" ng-show="menu.totalPrograms[3] >= 0">
+                                    ({{menu.totalPrograms[3]}})</small>
+                            </button>
+                            <!-- Relatórios -->
+                            <button class="btn btn-selector"
+                                ng-class="{active:menu.selectedTipProgram === 3}"
+                                ng-disabled="!menu.selectedTipProgram"
+                                ng-click="menu.selectTipProgram(3)">
+                                <input type="radio">{{ ::'reports' | i18n }}&nbsp;
+                                <small class="hidden-xs" ng-show="menu.totalPrograms[2] >= 0">
+                                    ({{menu.totalPrograms[2]}})</small>
+                            </button>
+                            <!-- Consultas -->
+                            <button class="btn btn-selector"
+                                ng-class="{active:menu.selectedTipProgram === 1}"
+                                ng-disabled="!menu.selectedTipProgram"
+                                ng-click="menu.selectTipProgram(1)">
+                                <input type="radio">{{ ::'queries' | i18n }}&nbsp;
+                                <small class="hidden-xs" ng-show="menu.totalPrograms[0] >= 0">
+                                    ({{menu.totalPrograms[0]}})</small>
+                            </button>
+                            <!-- Cadastros -->
+                            <button class="btn btn-selector"
+                                ng-class="{active:menu.selectedTipProgram === 2}"
+                                ng-disabled="!menu.selectedTipProgram"
+                                ng-click="menu.selectTipProgram(2)">
+                                <input type="radio">{{ ::'records' | i18n }}&nbsp;
+                                <small class="hidden-xs" ng-show="menu.totalPrograms[1] >= 0">
+                                    ({{menu.totalPrograms[1]}})</small>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TABELA COM A LISTA DE PROGRAMAS -->
+                <div class="row" id="menu-table-programs">
+                    <div class="col-lg-12 total-height">
+                        <div class="table-responsive">
+                            <table class="table table-condensed non-selectable">
+                                <thead>
+                                    <tr>
+                                        <th class="col-lg-1 col-md-1 col-sm-1 col-xs-1 clickable"
+                                            ng-click="sortField = (sortField === '-favorite' ? 'favorite' : '-favorite')">
+                                            <div class="row">
+                                                <div class="col-xs-6">{{ ::'favorite' | i18n }}</div>
+                                                <div class="col-xs-6 text-right">
+                                                    <span class="glyphicon" aria-hidden="true"
+                                                        ng-class="sortField === 'favorite' ? 'glyphicon-chevron-up' : 'glyphicon-chevron-down'">
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </th>
+                                        <th class="col-lg-4 col-md-4 col-sm-11 col-xs-11 clickable"
+                                            ng-click="sortField = (sortField === 'program' ? '-program' : 'program')">
+                                            <div class="row">
+                                                <div class="col-xs-8">{{ ::'program' | i18n }}</div>
+                                                <div class="col-xs-4 text-right">
+                                                    <span class="glyphicon" aria-hidden="true"
+                                                        ng-class="sortField === 'program' ? 'glyphicon-chevron-up' : 'glyphicon-chevron-down'">
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </th>
+                                        <th class="col-lg-4 col-md-4 hidden-sm hidden-xs clickable"
+                                            ng-click="sortField=(sortField==='description'?'-description':'description')">
+                                            <div class="row">
+                                                <div class="col-xs-8">{{ ::'name' | i18n }}</div>
+                                                <div class="col-xs-4 text-right">
+                                                    <span class="glyphicon" aria-hidden="true"
+                                                        ng-class="sortField === 'description' ? 'glyphicon-chevron-up' : 'glyphicon-chevron-down'">
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </th>
+                                        <th class="col-lg-3 col-md-3 hidden-sm hidden-xs">
+                                            <div class="row">
+                                                <div class="col-lg-4 col-md-4">{{ ::'module' | i18n }}</div>
+                                                <div class="col-lg-8 col-md-8 filter-program">
+                                                    <input type="text" class="form-control" ng-model="filterProgram"
+                                                        placeholder="{{ 'filter-program' | i18n }}">
+                                                </div>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="program in menu.programs | filter: filterProgram | filter:{ type: menu.selectedTipProgram } | orderBy:sortField track by $index"
+                                        ng-class="{'active':menu.selectedMenuItem === program}"
+                                        ng-click="menu.selectedMenuItem = (program)">
+                                        <td class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center clickable"
+                                            ng-click="program.favorite = !program.favorite">
+                                            <span class="glyphicon"
+                                                ng-style="{color:program.favorite ? 'orange' : 'black'}"
+                                                ng-class="program.favorite ? 'glyphicon-star' : 'glyphicon-star-empty'">
+                                            </span>
+                                        </td>
+                                        <td class="col-lg-4 col-md-4 col-sm-11 col-xs-11"
+                                            ng-dblclick="menu.openMenuProgram(menu.selectedMenuItem)">
+                                            {{ program.program }}
+                                        </td>
+                                        <td class="col-lg-4 col-md-4 hidden-sm hidden-xs"
+                                            ng-dblclick="menu.openMenuProgram(menu.selectedMenuItem)">
+                                            {{ program.description }}
+                                        </td>
+                                        <td class="col-lg-3 col-md-3 hidden-sm hidden-xs"
+                                            ng-dblclick="menu.openMenuProgram(menu.selectedMenuItem)">
+                                            {{ program.module }}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" id="menu-actions">
+                    <div class="col-lg-12 text-right">
+                        <button type="button" class="btn btn-primary"
+                                ng-disabled="!menu.selectedMenuItem"
+                                ng-click="menu.openMenuProgram(menu.selectedMenuItem)">{{ ::'execute' | i18n }}</button>
+
+                        <button type="button" class="btn btn-default"
+                                ng-hide="(menu.selectedMenuItem.favorite === true)"
+                                ng-disabled="!menu.selectedMenuItem"
+                                ng-click="menu.selectedMenuItem.favorite = true">{{ ::'add-favorite' | i18n }}</button>
+
+                        <button type="button" class="btn btn-default" style="width:175px"
+                                ng-show="(menu.selectedMenuItem.favorite === true)"
+                                ng-disabled="!menu.selectedMenuItem"
+                                ng-click="menu.selectedMenuItem.favorite = false">{{ ::'remove-favorite' | i18n }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
