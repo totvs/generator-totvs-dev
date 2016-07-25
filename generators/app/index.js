@@ -104,15 +104,15 @@ module.exports = yeoman.Base.extend({
     writing: {
         config: function() {
             // Editor Config
-            this.fs.copy(this.templatePath('.editorconfig'), this.destinationPath('.editorconfig'));
+            this.fs.copy(this.templatePath('_.editorconfig'), this.destinationPath('.editorconfig'));
             //Bower
-            this.fs.copyTpl(this.templatePath('.bowerrc'), this.destinationPath('.bowerrc'), this.props);
+            this.fs.copyTpl(this.templatePath('_.bowerrc'), this.destinationPath('.bowerrc'), this.props);
             this.fs.copyTpl(this.templatePath('_bower.json'), this.destinationPath('bower.json'), this.props);
             // Git
-            this.fs.copy(this.templatePath('.gitignore'), this.destinationPath('.gitignore'));
+            this.fs.copy(this.templatePath('_.gitignore'), this.destinationPath('.gitignore'));
             // JSHint e JSLint
-            this.fs.copy(this.templatePath('.jshintrc'), this.destinationPath('.jshintrc'));
-            this.fs.copy(this.templatePath('.jscsrc'), this.destinationPath('.jscsrc'));
+            this.fs.copy(this.templatePath('_.jshintrc'), this.destinationPath('.jshintrc'));
+            this.fs.copy(this.templatePath('_.jscsrc'), this.destinationPath('.jscsrc'));
             // NodeJS
             this.fs.copyTpl(this.templatePath('_package.json'), this.destinationPath('package.json'), this.props);
         },
