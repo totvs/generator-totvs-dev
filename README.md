@@ -27,6 +27,18 @@ Terceiro, baixe as bibliotecas do [TOTVS HTML Framework](http://tdn.totvs.com/di
 
 Salve os arquivos na pasta ***meu-projeto\src\app\js\libs***.
 
+## Configurações
+
+Caso não sejam instaladas as dependências de forma automática, verifique se sua rede não exige a configuração do proxy para o Bower, caso tenha dúvidas consulte a página oficial sobre o arquivo [.bowerrc](https://bower.io/docs/config/).
+
+As propriedades que precisam ser informadas no arquivo .bowerrc são "proxy" e "https-proxy".
+
+Após a configuração execute do bower para instalar as dependências manualmente.
+
+```bash
+bower install
+```
+
 ## Generator
 
 Ao executar o generator algumas perguntas devem ser preenchidas antes da aplicação ser gerada.
