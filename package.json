@@ -1,6 +1,6 @@
 {
     "name": "generator-totvs-dev",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "Generator of Totvs Web Developers",
     "homepage": "https://github.com/devtotvs/generator-totvs-dev",
     "author": {
@@ -25,24 +25,24 @@
         "angular"
     ],
     "dependencies": {
-        "yeoman-generator": "^0.23.3",
-        "chalk": "^1.0.0",
-        "yosay": "^1.0.2",
-        "lodash": "^4.6.1"
+        "chalk": "^1.1.3",
+        "lodash": "^4.14.0",
+        "yeoman-generator": "^0.24.1",
+        "yosay": "^1.2.0"
     },
     "devDependencies": {
-        "yeoman-test": "^1.0.0",
-        "yeoman-assert": "^2.0.0",
-        "eslint": "^2.1.0",
-        "eslint-config-xo-space": "^0.13.0",
-        "gulp": "^3.9.0",
-        "gulp-eslint": "^2.0.0",
+        "eslint": "^3.1.1",
+        "eslint-config-xo-space": "^0.14.0",
+        "gulp": "^3.9.1",
+        "gulp-eslint": "^3.0.1",
         "gulp-exclude-gitignore": "^1.0.0",
+        "gulp-istanbul": "^1.0.0",
         "gulp-line-ending-corrector": "^1.0.1",
-        "gulp-istanbul": "^0.10.3",
-        "gulp-mocha": "^2.0.0",
-        "gulp-plumber": "^1.0.0",
-        "gulp-nsp": "^2.1.0"
+        "gulp-mocha": "^2.2.0",
+        "gulp-nsp": "^2.4.2",
+        "gulp-plumber": "^1.1.0",
+        "yeoman-assert": "^2.2.1",
+        "yeoman-test": "^1.4.0"
     },
     "eslintConfig": {
         "extends": "xo-space",
