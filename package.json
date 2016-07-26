@@ -4,8 +4,8 @@
     "description": "Generator of Totvs Web Developers",
     "homepage": "https://github.com/devtotvs/generator-totvs-dev",
     "author": {
-        "name": "Jhosef Marks de Carvalho",
-        "email": "jhosef.carvalho@totvs.com.br",
+        "name": "TOTVS",
+        "email": "devtotvs@totvs.com",
         "url": "https://github.com/devtotvs/generator-totvs-dev"
     },
     "files": [
