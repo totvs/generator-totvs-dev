@@ -29,7 +29,7 @@ Salve os arquivos na pasta ***meu-projeto\src\app\js\libs***.
 
 ## Configurações
 
-Caso não sejam instaladas as dependências de forma automática, verifique se sua rede não exige a configuração do proxy para o Bower, caso tenha dúvidas consulte a página oficial sobre o arquivo [.bowerrc](https://bower.io/docs/config/).
+Caso não sejam instaladas as dependências de forma automática, verifique se sua rede não exige a configuração do proxy para o Bower, caso tenha dúvidas consulte a página oficial sobre o arquivo [.bowerrc](https://bower.io/docs/config/#bowerrc-specification).
 
 As propriedades que precisam ser informadas no arquivo .bowerrc são "proxy" e "https-proxy".
 
