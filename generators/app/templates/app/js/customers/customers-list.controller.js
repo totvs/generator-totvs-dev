@@ -149,7 +149,7 @@
 
         function openAdvancedSearch() {
 			var modalInstance = $modal.open({
-                templateUrl: '/js/customers/customer-search.view.html',
+                templateUrl: '/js/customers/customers-search.view.html',
                 controller: 'CustomerSearchController as controller',
                 size: 'md',
                 resolve: {

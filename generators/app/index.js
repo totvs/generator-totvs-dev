@@ -349,58 +349,58 @@ module.exports = yeoman.Base.extend({
         customers: function() {
             if (this.props.createCRUD) {
                 this.fs.copyTpl(
-                    this.templatePath('app/js/customers/customer-detail.controller.js'),
-                    this.destinationPath('src/app/js/customers/customer-detail.controller.js'),
+                    this.templatePath('app/js/customers/customers-detail.controller.js'),
+                    this.destinationPath('src/app/js/customers/customers-detail.controller.js'),
                     this.props
                 );
                 this.fs.copyTpl(
-                    this.templatePath('app/js/customers/customer-detail.view.html'),
-                    this.destinationPath('src/app/js/customers/customer-detail.view.html'),
+                    this.templatePath('app/js/customers/customers-detail.view.html'),
+                    this.destinationPath('src/app/js/customers/customers-detail.view.html'),
                     this.props
                 );
                 this.fs.copyTpl(
-                    this.templatePath('app/js/customers/customer-edit.controller.js'),
-                    this.destinationPath('src/app/js/customers/customer-edit.controller.js'),
+                    this.templatePath('app/js/customers/customers-edit.controller.js'),
+                    this.destinationPath('src/app/js/customers/customers-edit.controller.js'),
                     this.props
                 );
                 this.fs.copyTpl(
-                    this.templatePath('app/js/customers/customer-edit.view.html'),
-                    this.destinationPath('src/app/js/customers/customer-edit.view.html'),
+                    this.templatePath('app/js/customers/customers-edit.view.html'),
+                    this.destinationPath('src/app/js/customers/customers-edit.view.html'),
                     this.props
                 );
                 this.fs.copyTpl(
-                    this.templatePath('app/js/customers/customer-list.controller.js'),
-                    this.destinationPath('src/app/js/customers/customer-list.controller.js'),
+                    this.templatePath('app/js/customers/customers-list.controller.js'),
+                    this.destinationPath('src/app/js/customers/customers-list.controller.js'),
                     this.props
                 );
                 this.fs.copyTpl(
-                    this.templatePath('app/js/customers/customer-list.view.html'),
-                    this.destinationPath('src/app/js/customers/customer-list.view.html'),
+                    this.templatePath('app/js/customers/customers-list.view.html'),
+                    this.destinationPath('src/app/js/customers/customers-list.view.html'),
                     this.props
                 );
                 this.fs.copyTpl(
-                    this.templatePath('app/js/customers/customer-search.controller.js'),
-                    this.destinationPath('src/app/js/customers/customer-search.controller.js'),
+                    this.templatePath('app/js/customers/customers-search.controller.js'),
+                    this.destinationPath('src/app/js/customers/customers-search.controller.js'),
                     this.props
                 );
                 this.fs.copyTpl(
-                    this.templatePath('app/js/customers/customer-search.view.html'),
-                    this.destinationPath('src/app/js/customers/customer-search.view.html'),
+                    this.templatePath('app/js/customers/customers-search.view.html'),
+                    this.destinationPath('src/app/js/customers/customers-search.view.html'),
                     this.props
                 );
                 this.fs.copyTpl(
-                    this.templatePath('app/js/customers/customer.factory.js'),
-                    this.destinationPath('src/app/js/customers/customer.factory.js'),
+                    this.templatePath('app/js/customers/customers.factory.js'),
+                    this.destinationPath('src/app/js/customers/customers.factory.js'),
                     this.props
                 );
                 this.fs.copyTpl(
-                    this.templatePath('app/js/customers/customer.module.js'),
-                    this.destinationPath('src/app/js/customers/customer.module.js'),
+                    this.templatePath('app/js/customers/customers.module.js'),
+                    this.destinationPath('src/app/js/customers/customers.module.js'),
                     this.props
                 );
                 this.fs.copyTpl(
-                    this.templatePath('app/js/customers/customer.route.js'),
-                    this.destinationPath('src/app/js/customers/customer.route.js'),
+                    this.templatePath('app/js/customers/customers.route.js'),
+                    this.destinationPath('src/app/js/customers/customers.route.js'),
                     this.props
                 );
                 // i18n

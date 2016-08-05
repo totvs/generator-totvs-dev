@@ -31,7 +31,7 @@
 
     function customerFactory($totvsresource) {
 
-        var url = '/rest/demo/customers/:id',
+        var url = 'http://187.94.59.40:8081/rest/demo/customers/:id',
             factory;
 
         factory = $totvsresource.REST(url, {}, {});

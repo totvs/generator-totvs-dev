@@ -35,52 +35,52 @@
             url: '/customers',
             controller: 'CustomerListController',
             controllerAs: 'controller',
-            templateUrl: 'js/customers/customer-list.view.html',
+            templateUrl: 'js/customers/customers-list.view.html',
             title: 'Customers'
 
         }).state('customers.detail', {
             url: '/customers/detail/:id',
             controller: 'CustomerDetailController',
             controllerAs: 'controller',
-            templateUrl: 'js/customers/customer-detail.view.html',
+            templateUrl: 'js/customers/customers-detail.view.html',
             title: 'Customers'
 
         }).state('customers.new', {
             url: '/customers/new',
             controller: 'CustomerEditController',
             controllerAs: 'controller',
-            templateUrl: 'js/customers/customer-edit.view.html',
+            templateUrl: 'js/customers/customers-edit.view.html',
             title: 'Customers'
 
         }).state('customers.edit', {
             url: '/customers/edit/:id',
             controller: 'CustomerEditController',
             controllerAs: 'controller',
-            templateUrl: 'js/customers/customer-edit.view.html',
+            templateUrl: 'js/customers/customers-edit.view.html',
             title: 'Customers'
 
         });<% } else { %>$routeProvider.when('/customers', {
             controller: 'CustomerListController',
             controllerAs: 'controller',
-            templateUrl: 'js/customers/customer-list.view.html',
+            templateUrl: 'js/customers/customers-list.view.html',
             title: 'Customers'
 
         }).when('/customers/detail/:id', {
             controller: 'CustomerDetailController',
             controllerAs: 'controller',
-            templateUrl: 'js/customers/customer-detail.view.html',
+            templateUrl: 'js/customers/customers-detail.view.html',
             title: 'Customers'
 
         }).when('/customers/new', {
             controller: 'CustomerEditController',
             controllerAs: 'controller',
-            templateUrl: 'js/customers/customer-edit.view.html',
+            templateUrl: 'js/customers/customers-edit.view.html',
             title: 'Customers'
 
         }).when('/customers/edit/:id', {
             controller: 'CustomerEditController',
             controllerAs: 'controller',
-            templateUrl: 'js/customers/customer-edit.view.html',
+            templateUrl: 'js/customers/customers-edit.view.html',
             title: 'Customers'
 
         });<% } %>
