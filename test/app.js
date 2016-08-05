@@ -55,15 +55,17 @@ describe('generator-totvs-dev:app', function () {
         ],
 
         sampleCRUDFiles = [
-            'src/app/js/customers/customer-edit.controller.js',
-            'src/app/js/customers/customer-edit.view.html',
-            'src/app/js/customers/customer-list.controller.js',
-            'src/app/js/customers/customer-list.view.html',
-            'src/app/js/customers/customer-search.controller.js',
-            'src/app/js/customers/customer-search.view.html',
-            'src/app/js/customers/customer.factory.js',
-            'src/app/js/customers/customer.module.js',
-            'src/app/js/customers/customer.route.js',
+            'src/app/js/customers/customers-detail.controller.js',
+            'src/app/js/customers/customers-detail.view.html',
+            'src/app/js/customers/customers-edit.controller.js',
+            'src/app/js/customers/customers-edit.view.html',
+            'src/app/js/customers/customers-list.controller.js',
+            'src/app/js/customers/customers-list.view.html',
+            'src/app/js/customers/customers-search.controller.js',
+            'src/app/js/customers/customers-search.view.html',
+            'src/app/js/customers/customers.factory.js',
+            'src/app/js/customers/customers.module.js',
+            'src/app/js/customers/customers.route.js',
             'src/app/js/customers/i18n/translations.js'
         ],
 
@@ -129,7 +131,6 @@ describe('generator-totvs-dev:app', function () {
         });
 
     });
-
 
     /*describe('no UI Router', function() {
 
