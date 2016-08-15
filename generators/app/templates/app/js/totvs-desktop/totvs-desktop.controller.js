@@ -28,30 +28,63 @@
         .controller('TotvsDesktopController', TotvsDesktopController);
 
     TotvsDesktopController.$inject = [
+        '$timeout'<% if (singlePageApp) { %>,
+        '$location',
+        'i18nFilter',
+        'totvsDesktopMenuRecents',
+        'totvsDesktopMenuFavorites',
+        'totvsDesktopMenuPrograms',
+        'totvsDesktopMenuProcesses'<% } %><% if (tabPageApp) { %>,
         '$rootScope',
         '$scope',
         '$state',
-        '$timeout',
         'TotvsDesktopViewService',
-        'TotvsDesktopTabService'];
+        'TotvsDesktopTabService'<% } %>
+    ];
 
     function TotvsDesktopController(
-        $rootScope, $scope, $state, $timeout, TotvsDesktopViewService, TotvsDesktopTabService) {
+        $timeout<% if (singlePageApp) { %>,
+        $location,
+        i18nFilter,
+        totvsDesktopMenuRecents,
+        totvsDesktopMenuFavorites,
+        totvsDesktopMenuPrograms,
+        totvsDesktopMenuProcesses<% } %><% if (tabPageApp) { %>,
+        $rootScope,
+        $scope,
+        $state,
+        TotvsDesktopViewService,
+        TotvsDesktopTabService<% } %>) {
 
         // *********************************************************************************
 		// *** Variables
 		// *********************************************************************************
 
-        var self = this,
-            removeCurrentView = false;
+        var self = this<% if (singlePageApp) { %>,
+            menus = {
+                recs: $('#recs'),
+                favs: $('#favs'),
+                apps: $('#apps'),
+                prcs: $('#prcs')
+            }<% } %><% if (tabPageApp) { %>,
+            removeCurrentView = false<% } %>;
 
         // *********************************************************************************
 		// *** Public Properties and Methods
 		// *********************************************************************************
 
-        self.tabs = [];
-        self.options = [];
-        self.headerInformations = [];
+        <% if (tabPageApp) { %>self.tabs = [];
+        <% } %>self.options = [];
+        self.headerInformations = [];<% if (singlePageApp) { %>
+        self.srcLogo = 'assets/img/totvs.png'; // TODO: Factory for logo
+        self.selectedMenuGroup = undefined;
+        self.recents = [];
+        self.favorites = [];
+        self.processes = [];
+        self.applications = [];
+        self.loadMenu = loadMenu;
+        self.loadPrograms = loadPrograms;
+        self.openMenuProgram = openMenuProgram;<% } %>
 
         init();
 
@@ -59,9 +92,9 @@
 		// *** Controller Initialize
 		// *********************************************************************************
 
-        function init() {
+        function init() {<% if (tabPageApp) { %>
 
-            self.tabs = TotvsDesktopTabService.addTab('Home', 'home.blank', {}, undefined, tabOnSelect);
+            self.tabs = TotvsDesktopTabService.addTab('Home', 'home.blank', {}, undefined, tabOnSelect);<% } %>
 
             self.options = [
                 {title:'Config', action: optionAction, icon:'cfg'},
@@ -74,12 +107,35 @@
                 {label: 'TOTVS S/A', action: headerAction},
                 {label: 'Usuário: Admin'},
                 {label: 'TOTVS | HTML Framework - 12.1.12'}
-            ];
+            ];<% if (singlePageApp) { %>
+
+            // Load List Menu Recents
+            totvsDesktopMenuRecents.getProgramRecents(function(data) {
+                self.recents = angular.copy(data);
+            });
+
+            // Load List Menu Favorites
+            totvsDesktopMenuFavorites.getProgramFavorites(function(data) {
+                self.favorites = angular.copy(data);
+            });
+
+            // Load List Menu Applications
+            totvsDesktopMenuPrograms.getProgramApplications(function(data) {
+                self.applications = data;
+            });
+
+            // Load List Menu Processes
+            totvsDesktopMenuProcesses.getMenuProcesses(function(data) {
+                self.processes = data;
+            });
+
+            self.selectedMenuGroup = 'favs';<% } %>
+
         }
 
         // *********************************************************************************
 		// *** Functions
-		// *********************************************************************************
+		// *********************************************************************************<% if (tabPageApp) { %>
 
         function tabOnClose(tab) {
             if (tab.view) {
@@ -93,7 +149,7 @@
             if (tab.state) {
                 $state.go(tab.state, tab.params);
             }
-        }
+        }<% } %>
 
         function optionAction(option) {
             // TODO: Execute action for options
@@ -101,7 +157,47 @@
 
         function headerAction(information) {
             // TODO: Execute action for header actions
+        }<% if (singlePageApp) { %>
+
+        function loadMenu(menu) {
+
+            if (self.selectedMenuGroup === menu) {
+                return;
+            }
+
+            angular.forEach(menus, function (itemMenu) {
+                itemMenu.next().slideUp();
+            });
+
+            menus[menu].next().slideDown();
+
+            self.selectedMenuGroup = menu;
         }
+
+        function loadPrograms(app) {
+            self.selectedApplication = app;
+
+            if (!app) {
+                return;
+            }
+
+            self.applications.forEach(function (application) {
+                if (application.id !== app.id) {
+                    $('#' + application.id).next().slideUp();
+                }
+            });
+
+            $('#' + app.id).next().slideDown();
+        }
+
+        function openMenuProgram (program) {
+
+            if (!program) {
+                return;
+            }
+
+            $location.url(program.url);
+        }<% } %><% if (tabPageApp) { %>
 
         // *********************************************************************************
 		// *** Listeners Broadcast
@@ -133,7 +229,7 @@
                     tabOnSelect, tabOnClose);
             });
 
-        });
+        });<% } %>
     }
 
 }());

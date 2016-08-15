@@ -53,11 +53,21 @@
         self.customer = {};
         self.cancel = cancel;
         self.save = save;
-        self.saveNew = saveNew;
+        self.saveNew = saveNew;<% if (singlePageApp) { %>
+
+        init();<% } %>
 
         // *********************************************************************************
 		// *** Controller Initialize
-		// *********************************************************************************
+		// *********************************************************************************<% if (singlePageApp) { %>
+
+        function init() {
+
+            if ($stateParams && $stateParams.id) {
+                loadRecord($stateParams.id);
+            }
+
+        }<% } %><% if (tabPageApp) { %>
 
         function init(cacheController) {
 
@@ -71,6 +81,7 @@
                     self[property] = value;
                 });
             }
+
 		}
 
         // *********************************************************************************
@@ -79,7 +90,7 @@
 
         $scope.$on('$totvsViewServiceInit', function (event, cacheController) {
             init(cacheController);
-        });
+        });<% } %>
 
 		// *********************************************************************************
 		// *** Functions

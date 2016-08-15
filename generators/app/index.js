@@ -12,7 +12,6 @@ module.exports = yeoman.Base.extend({
 
         this.props = {
             currentDate: currentDate,
-            singlePageApp: false,
             useRequireJS: false,
             useCDN: false,
             useUIRouter: true,
@@ -50,12 +49,12 @@ module.exports = yeoman.Base.extend({
             name: 'homepage',
             message: 'Home page',
             default: 'www.totvs.com'
-        /*},{
+        },{
             type: 'confirm',
             name: 'singlePageApp',
             message: 'Single Page Application',
-            default: false
-        },{
+            default: true
+        /*},{
             type: 'confirm',
             name: 'useRequireJS',
             message: 'Use RequireJS',
@@ -90,8 +89,9 @@ module.exports = yeoman.Base.extend({
             this.props.version = answers.version;
             this.props.repository = answers.repository;
             this.props.homepage = answers.homepage;
-            /*this.props.singlePageApp = answers.singlePageApp;
-            this.props.useRequireJS = answers.useRequireJS;
+            this.props.singlePageApp = answers.singlePageApp;
+            this.props.tabPageApp = !answers.singlePageApp;
+            /*this.props.useRequireJS = answers.useRequireJS;
             this.props.useCDN = answers.useCDN;
             this.props.useUIRouter = answers.useUIRouter;
             this.props.minification = answers.minification;*/
@@ -197,12 +197,34 @@ module.exports = yeoman.Base.extend({
                 this.destinationPath('src/app/js/totvs-desktop/totvs-desktop-header.directive.js'),
                 this.props
             );
-            //if (!this.props.singlePageApp) {
+            if (this.props.singlePageApp) {
                 this.fs.copyTpl(
-                    this.templatePath('app/js/totvs-desktop/totvs-desktop-tab.directive.js'),
-                    this.destinationPath('src/app/js/totvs-desktop/totvs-desktop-tab.directive.js'),
+                    this.templatePath('app/js/totvs-desktop/totvs-desktop-menu-favorites.factory.js'),
+                    this.destinationPath('src/app/js/totvs-desktop/totvs-desktop-menu-favorites.factory.js'),
                     this.props
                 );
+                this.fs.copyTpl(
+                    this.templatePath('app/js/totvs-desktop/totvs-desktop-menu-processes.factory.js'),
+                    this.destinationPath('src/app/js/totvs-desktop/totvs-desktop-menu-processes.factory.js'),
+                    this.props
+                );
+                this.fs.copyTpl(
+                    this.templatePath('app/js/totvs-desktop/totvs-desktop-menu-programs.factory.js'),
+                    this.destinationPath('src/app/js/totvs-desktop/totvs-desktop-menu-programs.factory.js'),
+                    this.props
+                );
+                this.fs.copyTpl(
+                    this.templatePath('app/js/totvs-desktop/totvs-desktop-menu-recents.factory.js'),
+                    this.destinationPath('src/app/js/totvs-desktop/totvs-desktop-menu-recents.factory.js'),
+                    this.props
+                );
+            }
+            this.fs.copyTpl(
+                this.templatePath('app/js/totvs-desktop/totvs-desktop-tab.directive.js'),
+                this.destinationPath('src/app/js/totvs-desktop/totvs-desktop-tab.directive.js'),
+                this.props
+            );
+            if (this.props.tabPageApp) {
                 this.fs.copyTpl(
                     this.templatePath('app/js/totvs-desktop/totvs-desktop-tab.service.js'),
                     this.destinationPath('src/app/js/totvs-desktop/totvs-desktop-tab.service.js'),
@@ -213,50 +235,52 @@ module.exports = yeoman.Base.extend({
                     this.destinationPath('src/app/js/totvs-desktop/totvs-desktop-view.service.js'),
                     this.props
                 );
-            //}
+            }
         },
         menu: function() {
             // Menu
-            this.fs.copyTpl(
-                this.templatePath('app/js/totvs-menu/totvs-menu-favorites.factory.js'),
-                this.destinationPath('src/app/js/totvs-menu/totvs-menu-favorites.factory.js'),
-                this.props
-            );
-            this.fs.copyTpl(
-                this.templatePath('app/js/totvs-menu/totvs-menu-processes.factory.js'),
-                this.destinationPath('src/app/js/totvs-menu/totvs-menu-processes.factory.js'),
-                this.props
-            );
-            this.fs.copyTpl(
-                this.templatePath('app/js/totvs-menu/totvs-menu-programs.factory.js'),
-                this.destinationPath('src/app/js/totvs-menu/totvs-menu-programs.factory.js'),
-                this.props
-            );
-            this.fs.copyTpl(
-                this.templatePath('app/js/totvs-menu/totvs-menu-recents.factory.js'),
-                this.destinationPath('src/app/js/totvs-menu/totvs-menu-recents.factory.js'),
-                this.props
-            );
-            this.fs.copyTpl(
-                this.templatePath('app/js/totvs-menu/totvs-menu.constant.js'),
-                this.destinationPath('src/app/js/totvs-menu/totvs-menu.constant.js'),
-                this.props
-            );
-            this.fs.copyTpl(
-                this.templatePath('app/js/totvs-menu/totvs-menu.controller.js'),
-                this.destinationPath('src/app/js/totvs-menu/totvs-menu.controller.js'),
-                this.props
-            );
-            this.fs.copyTpl(
-                this.templatePath('app/js/totvs-menu/totvs-menu.module.js'),
-                this.destinationPath('src/app/js/totvs-menu/totvs-menu.module.js'),
-                this.props
-            );
-            this.fs.copyTpl(
-                this.templatePath('app/js/totvs-menu/totvs-menu.view.html'),
-                this.destinationPath('src/app/js/totvs-menu/totvs-menu.view.html'),
-                this.props
-            );
+            if (this.props.tabPageApp) {
+                this.fs.copyTpl(
+                    this.templatePath('app/js/totvs-menu/totvs-menu-favorites.factory.js'),
+                    this.destinationPath('src/app/js/totvs-menu/totvs-menu-favorites.factory.js'),
+                    this.props
+                );
+                this.fs.copyTpl(
+                    this.templatePath('app/js/totvs-menu/totvs-menu-processes.factory.js'),
+                    this.destinationPath('src/app/js/totvs-menu/totvs-menu-processes.factory.js'),
+                    this.props
+                );
+                this.fs.copyTpl(
+                    this.templatePath('app/js/totvs-menu/totvs-menu-programs.factory.js'),
+                    this.destinationPath('src/app/js/totvs-menu/totvs-menu-programs.factory.js'),
+                    this.props
+                );
+                this.fs.copyTpl(
+                    this.templatePath('app/js/totvs-menu/totvs-menu-recents.factory.js'),
+                    this.destinationPath('src/app/js/totvs-menu/totvs-menu-recents.factory.js'),
+                    this.props
+                );
+                this.fs.copyTpl(
+                    this.templatePath('app/js/totvs-menu/totvs-menu.constant.js'),
+                    this.destinationPath('src/app/js/totvs-menu/totvs-menu.constant.js'),
+                    this.props
+                );
+                this.fs.copyTpl(
+                    this.templatePath('app/js/totvs-menu/totvs-menu.controller.js'),
+                    this.destinationPath('src/app/js/totvs-menu/totvs-menu.controller.js'),
+                    this.props
+                );
+                this.fs.copyTpl(
+                    this.templatePath('app/js/totvs-menu/totvs-menu.module.js'),
+                    this.destinationPath('src/app/js/totvs-menu/totvs-menu.module.js'),
+                    this.props
+                );
+                this.fs.copyTpl(
+                    this.templatePath('app/js/totvs-menu/totvs-menu.view.html'),
+                    this.destinationPath('src/app/js/totvs-menu/totvs-menu.view.html'),
+                    this.props
+                );
+            }
         },
         dashboard: function() {
             if (this.props.createDashboard) {

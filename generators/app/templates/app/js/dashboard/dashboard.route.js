@@ -35,27 +35,27 @@
             url: '/dashboard',
             controller: 'DashboardController',
             controllerAs: 'controller',
-            templateUrl: 'js/dashboard/dashboard.view.html',
-            title: 'Dashboard'
+            templateUrl: 'js/dashboard/dashboard.view.html'<% if (tabPageApp) { %>,
+            title: 'Dashboard'<% } %>
 
         }).state('dashboard.settings', {
 			url: '/dashboard/settings',
             controller: 'DashboardSettingsController',
             controllerAs: 'controller',
-            templateUrl: 'js/dashboard/dashboard-settings.view.html',
-            title: 'Dashboard'
+            templateUrl: 'js/dashboard/dashboard-settings.view.html'<% if (tabPageApp) { %>,
+            title: 'Dashboard'<% } %>
 
         });<% } else { %>$routeProvider.when('/dashboard', {
             controller: 'DashboardController',
             controllerAs: 'controller',
-            templateUrl: 'js/dashboard/dashboard.view.html',
-            title: 'Dashboard'
+            templateUrl: 'js/dashboard/dashboard.view.html'<% if (tabPageApp) { %>,
+            title: 'Dashboard'<% } %>
 
         }).when('/dashboard/settings', {
             controller: 'DashboardSettingsController',
             controllerAs: 'controller',
-            templateUrl: 'js/dashboard/dashboard-settings.view.html',
-            title: 'Dashboard'
+            templateUrl: 'js/dashboard/dashboard-settings.view.html'<% if (tabPageApp) { %>,
+            title: 'Dashboard'<% } %>
 
         });<% } %>
     }

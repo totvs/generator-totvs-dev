@@ -36,23 +36,23 @@
             template: '<ui-view/>'
 
         }).state('home.blank', {
-            url: '/',
+            url: '/'<% if (tabPageApp) { %>,
             controller: 'TotvsMenuController',
             controllerAs: 'menu',
             templateUrl: 'js/totvs-menu/totvs-menu.view.html',
-            title: 'Home'
-
-		});
-
-        $urlRouterProvider.otherwise('/');<% } else { %>$routeProvider.when('/', {
-            controller: 'TotvsMenuController',
-            controllerAs: 'menu',
-            templateUrl: 'js/totvs-menu/totvs-menu.view.html',
-            title: 'Home'
+            title: 'Home'<% } %>
 
         });
 
-        $routeProvider.otherwise('/')<% } %>
+        $urlRouterProvider.otherwise('/');<% } else { %>$routeProvider.when('/', {<% if (tabPageApp) { %>
+            controller: 'TotvsMenuController',
+            controllerAs: 'menu',
+            templateUrl: 'js/totvs-menu/totvs-menu.view.html',
+            title: 'Home'<% } %>
+
+        });
+
+        $routeProvider.otherwise('/');<% } %>
 
     }
 

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html<% if (!useRequireJS) { %> ng-app="totvsApp"<% } %>>
 <head>
 	<title>TOTVS | <%= title %></title>
@@ -46,24 +46,123 @@
 
     <!-- APP / DESKTOP HTML -->
     <div id="menu-wrapper" class="total-height" style="background-color: #e0e5eA" ng-controller="TotvsDesktopController as desktop">
-        <% if (!singlePageApp) { %><!-- TABS AND OPTIONS -->
+        <!-- TABS AND OPTIONS -->
         <div>
-            <totvs-desktop-tab t-tabs="desktop.tabs" t-options="desktop.options"></totvs-desktop-tab>
+            <totvs-desktop-tab <% if (tabPageApp) { %>t-tabs="desktop.tabs" <% } %>t-options="desktop.options"></totvs-desktop-tab>
         </div>
-        <% } %>
+
         <!-- HEADER -->
         <div>
             <totvs-desktop-header t-title="TOTVS" t-informations="desktop.headerInformations"></totvs-desktop-header>
         </div>
 
         <!-- MENU -->
-        <div id="menu-contents">
+        <div id="menu-contents"><% if (tabPageApp) { %>
             <div id="menu-view" <% if (useUIRouter) { %>ui-view<% } else { %>ng-view<% } %>></div>
+            <% } else { %>
+            <div class="container-fluid total-height">
+
+                <!-- MENU LATERAL -->
+                <div class="row no-gutter total-height" id="menu-desktop">
+                    <div class="col-md-2 col-sm-3 col-xs-4 total-height" id="menu-lateral">
+                        <!-- LOGOTIPO -->
+                        <div class="menu-block hidden-sm hidden-xs" id="menu-logo">
+                             <img ng-src="{{ ::desktop.srcLogo }}" >
+                        </div>
+
+                        <!-- ESTRUTURA DO MENU -->
+                        <div class="menu-block disable-select" id="menu-structure">
+                            <!-- RECENTES -->
+                            <div class="menu-title" id="recs" ng-click="desktop.loadMenu('recs')"
+                                ng-class="{active: desktop.selectedMenuGroup === 'recs'}">
+                                <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                                &nbsp;{{ ::'recents' | i18n }}
+                            </div>
+
+                            <div id="menu-recents" style="display: none;">
+                                <div ng-repeat="recent in desktop.recents track by $index">
+                                    <div class="menu-item" title="{{recent.program}}"
+                                        ng-click="desktop.openMenuProgram(recent)"
+                                        ng-class="{active: recent === desktop.selectedRecent}">
+                                        <span class="menu-item-text">{{ recent.program }}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- FAVORITOS -->
+                            <div class="menu-title" id="favs" ng-click="desktop.loadMenu('favs')"
+                                ng-class="{active: desktop.selectedMenuGroup === 'favs'}">
+                                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                &nbsp;{{ ::'favorites' | i18n }}
+                            </div>
+
+                            <div id="menu-favorites">
+                                <div ng-repeat="favorite in desktop.favorites track by $index">
+                                    <div class="menu-item" title="{{favorite.program}}"
+                                        ng-click="desktop.openMenuProgram(favorite)"
+                                        ng-class="{active: favorite === desktop.selectedFavorite}">
+                                        <span class="menu-item-text">{{ favorite.program }}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- APLICATIVOS -->
+                            <div class="menu-title" id="apps" ng-click="desktop.loadMenu('apps')"
+                                ng-class="{active: desktop.selectedMenuGroup === 'apps'}">
+                                <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+                                &nbsp;{{ ::'applications' | i18n }}
+                            </div>
+
+                            <div id="menu-applications" style="display: none;">
+                                <div ng-repeat="app in desktop.applications">
+                                    <div class="menu-group" id="{{app.id}}" ng-click="desktop.loadPrograms(app)">
+                                        {{ ::app.application }}
+                                    </div>
+
+                                    <div id="menu-modules" style="display: none">
+                                        <div class="menu-item" id="{{app.codGroupAplicat + '.' + module.codModul}}"
+                                            title="{{module.module}}"
+                                            ng-repeat="program in app.programs track by $index"
+                                            ng-click="desktop.openMenuProgram(program)"
+                                            ng-class="{active: program === desktop.selectedprogram}">
+                                            <span class="menu-item-text">{{ program.program }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- PROCESSOS -->
+                            <div class="menu-title" id="prcs" ng-click="desktop.loadMenu('prcs')"
+                                ng-class="{active: desktop.selectedMenuGroup === 'prcs'}">
+                                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                                &nbsp;{{ ::'processes' | i18n }}
+                            </div>
+
+                            <div id="menu-processes" style="display: none;">
+                                <div ng-repeat="prcs in desktop.processes track by $index">
+                                    <div class="menu-item" id="{{prcs.id}}" title="{{prcs.program}}"
+                                        ng-click="desktop.openMenuProgram(prcs)"
+                                        ng-class="{active: prcs === desktop.selectedProcess}">
+                                        <span class="menu-item-text">{{ prcs.program }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-10 col-sm-9 col-xs-8 total-height" id="menu-workspace">
+                        <!-- CONTEۄO DO MENU -->
+                        <div class="menu-block" id="menu-content">
+                            <div id="menu-view" <% if (useUIRouter) { %>ui-view<% } else { %>ng-view<% } %>></div>
+                        </div>
+                    </div>
+                </div>
+            </div><% } %>
         </div>
     </div>
 
     <% if (useRequireJS) { %><!-- RequireJs -->
-    <!-- Script de configuração do APP, deve ser chamado no HTML antes do RequireJs -->
+    <!-- Script de configura褯 do APP, deve ser chamado no HTML antes do RequireJs -->
     <script type="text/javascript" src="js/setup/config-app.js"></script>
 
     <script type="text/javascript" src="js/libs/require.js" data-main="js/main" charset="utf8"></script>
@@ -100,7 +199,7 @@
 
     <script type="text/javascript" src="js/totvs-app.module.js"></script>
     <script type="text/javascript" src="js/totvs-app.config.js"></script>
-    <script type="text/javascript" src="js/totvs-app.route.js"></script>
+    <script type="text/javascript" src="js/totvs-app.route.js"></script><% if (tabPageApp) { %>
 
     <!-- Menu Tab -->
     <script type="text/javascript" src="js/totvs-menu/totvs-menu.module.js"></script>
@@ -109,14 +208,18 @@
     <script type="text/javascript" src="js/totvs-menu/totvs-menu-favorites.factory.js"></script>
     <script type="text/javascript" src="js/totvs-menu/totvs-menu-programs.factory.js"></script>
     <script type="text/javascript" src="js/totvs-menu/totvs-menu-processes.factory.js"></script>
-    <script type="text/javascript" src="js/totvs-menu/totvs-menu.controller.js"></script>
+    <script type="text/javascript" src="js/totvs-menu/totvs-menu.controller.js"></script><% } %>
 
     <!-- Desktop -->
-    <script type="text/javascript" src="js/totvs-desktop/totvs-desktop.module.js"></script>
+    <script type="text/javascript" src="js/totvs-desktop/totvs-desktop.module.js"></script><% if (singlePageApp) { %>
+    <script type="text/javascript" src="js/totvs-desktop/totvs-desktop-menu-recents.factory.js"></script>
+    <script type="text/javascript" src="js/totvs-desktop/totvs-desktop-menu-favorites.factory.js"></script>
+    <script type="text/javascript" src="js/totvs-desktop/totvs-desktop-menu-programs.factory.js"></script>
+    <script type="text/javascript" src="js/totvs-desktop/totvs-desktop-menu-processes.factory.js"></script><% } %><% if (tabPageApp) { %>
     <script type="text/javascript" src="js/totvs-desktop/totvs-desktop-view.service.js"></script>
+    <script type="text/javascript" src="js/totvs-desktop/totvs-desktop-tab.service.js"></script><% } %>
     <script type="text/javascript" src="js/totvs-desktop/totvs-desktop.controller.js"></script>
     <script type="text/javascript" src="js/totvs-desktop/totvs-desktop-header.directive.js"></script>
-    <script type="text/javascript" src="js/totvs-desktop/totvs-desktop-tab.service.js"></script>
     <script type="text/javascript" src="js/totvs-desktop/totvs-desktop-tab.directive.js"></script><% if (createCRUD) { %>
 
     <!-- Customer -->
@@ -138,7 +241,7 @@
     <script type="text/javascript" src="js/dashboard/widgets/widget.module.js"></script>
     <script type="text/javascript" src="js/dashboard/widgets/widget-pie.controller.js"></script>
     <script type="text/javascript" src="js/dashboard/widgets/widget-table.controller.js"></script>
-    <script type="text/javascript" src="js/dashboard/widgets/widget-area.controller.js"></script><% } %>
-    <% } %>
+    <script type="text/javascript" src="js/dashboard/widgets/widget-area.controller.js"></script><% } %><% } %>
+
 </body>
 </html>

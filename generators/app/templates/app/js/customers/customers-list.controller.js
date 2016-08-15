@@ -58,11 +58,19 @@
         self.openAdvancedSearch = openAdvancedSearch;
         self.removeDisclaimer = removeDisclaimer;
         self.applyEdit = applyEdit;
-        self.onRemove = onRemove;
+        self.onRemove = onRemove;<% if (singlePageApp) { %>
+
+        init();<% } %>
 
         // *********************************************************************************
 		// *** Controller Initialize
-		// *********************************************************************************
+		// *********************************************************************************<% if (singlePageApp) { %>
+
+        function init() {
+
+            loadRecords(false);
+
+        }<% } %><% if (tabPageApp) { %>
 
 		function init(cacheController) {
 
@@ -84,7 +92,7 @@
 
         $scope.$on('$totvsViewServiceInit', function (event, cacheController) {
             init(cacheController);
-        });
+        });<% } %>
 
         // *********************************************************************************
 		// *** Functions

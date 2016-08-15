@@ -39,6 +39,16 @@ describe('generator-totvs-dev:app', function () {
             'src/app/js/totvs-desktop/totvs-desktop.controller.js',
             'src/app/js/totvs-desktop/totvs-desktop-header.directive.js',
             'src/app/js/totvs-desktop/totvs-desktop-tab.directive.js',
+        ],
+
+        desktopSpaFiles = [
+            'src/app/js/totvs-desktop/totvs-desktop-menu-favorites.factory.js',
+            'src/app/js/totvs-desktop/totvs-desktop-menu-processes.factory.js',
+            'src/app/js/totvs-desktop/totvs-desktop-menu-programs.factory.js',
+            'src/app/js/totvs-desktop/totvs-desktop-menu-recents.factory.js'
+        ],
+
+        desktopTabFiles = [
             'src/app/js/totvs-desktop/totvs-desktop-tab.service.js',
             'src/app/js/totvs-desktop/totvs-desktop-view.service.js'
         ],
@@ -88,7 +98,7 @@ describe('generator-totvs-dev:app', function () {
             'src/app/js/dashboard/i18n/translations.js'
         ];
 
-    describe('default answers', function() {
+    describe('Default answers', function() {
 
         before(function () {
             return helpers.run(path.join(__dirname, '../generators/app'))
@@ -118,8 +128,12 @@ describe('generator-totvs-dev:app', function () {
             assert.file(desktopFiles);
         });
 
-        it('Creates files menu', function () {
-            assert.file(menuFiles);
+        it('Create files SPA', function () {
+            assert.file(desktopSpaFiles);
+        });
+
+        it('No creates files menu', function () {
+            assert.noFile(menuFiles);
         });
 
         it('Creates files Sample CRUD', function () {
@@ -128,6 +142,50 @@ describe('generator-totvs-dev:app', function () {
 
         it('Creates files Sample Dashboard', function () {
             assert.file(sampleDashboardFiles);
+        });
+
+    });
+
+    describe('Create Single Page Application', function() {
+
+        before(function () {
+            return helpers.run(path.join(__dirname, '../generators/app'))
+                .withPrompts({singlePageApp: true, tabPageApp: false})
+                .toPromise();
+        });
+
+        it('Create files SPA', function () {
+            assert.file(desktopSpaFiles);
+        });
+
+        it('No creates files menu', function () {
+            assert.noFile(menuFiles);
+        });
+
+        it('No creates files Tab', function () {
+            assert.noFile(desktopTabFiles);
+        });
+
+    });
+
+    describe('Create Tab Page Application', function() {
+
+        before(function () {
+            return helpers.run(path.join(__dirname, '../generators/app'))
+                .withPrompts({tabPageApp: true, singlePageApp: false})
+                .toPromise();
+        });
+
+        it('Create files Tab', function () {
+            assert.file(desktopTabFiles);
+        });
+
+        it('Creates files menu', function () {
+            assert.file(menuFiles);
+        });
+
+        it('No creates files SPA', function () {
+            assert.noFile(desktopSpaFiles);
         });
 
     });
@@ -143,7 +201,7 @@ describe('generator-totvs-dev:app', function () {
         assert.fileContent('src/app/index.html', 'angular');
     });*/
 
-    describe('no Samples', function() {
+    describe('No Samples', function() {
 
         before(function () {
             return helpers.run(path.join(__dirname, '../generators/app'))

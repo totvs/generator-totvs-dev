@@ -36,7 +36,8 @@
         var directive = {
             template:
                 '<div id="menu-topbar">' +
-                    '<div class="btn-group pull-left" id="menu-tabs" role="group" aria-label="menu-tabs"> ' +
+                    '<div class="btn-group pull-left" id="menu-tabs" role="group" aria-label="menu-tabs"> ' +<% if (singlePageApp) { %>
+                        '<div class="btn btn-module btn-home" role="button"></div>' +<% } %><% if (tabPageApp) { %>
                         '<div class="btn btn-module" id="{{tab.name}}" title="{{tab.name}}" role="button" ' +
                             ' ng-repeat="tab in tTabs" ' +
                             ' ng-class="{\'active\':tab.active,\'btn-home\':tab.name===\'Home\'}"> ' +
@@ -44,7 +45,7 @@
                                 ' ng-click="selectTab(tab)">{{tab.name}}</span> ' +
                             '<span class="module-close" ng-hide="tab.name===\'Home\' || !tab.onClose" ' +
                                 ' ng-click="closeTab(tab)">&times;</span> ' +
-                        '</div>' +
+                        '</div>' +<% } %>
                     '</div> ' +
                     '<div class="btn-group pull-right" id="menu-options"> ' +
                         '<button ng-repeat="option in tOptions" type="button" ' +
@@ -54,14 +55,14 @@
                 '</div>',
             restrict: 'E',
             replace: true,
-            scope: {
-                tTabs: '=',
+            scope: {<% if (tabPageApp) { %>
+                tTabs: '=',<% } %>
                 tOptions: '='
-            },
-            link: link
+            }<% if (tabPageApp) { %>,
+            link: link<% } %>
         };
 
-        return directive;
+        return directive;<% if (tabPageApp) { %>
 
         /**
         * @name link
@@ -157,7 +158,7 @@
                 }
             }
 
-        }
+        }<% } %>
     }
 
 }());

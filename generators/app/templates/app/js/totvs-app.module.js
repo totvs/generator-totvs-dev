@@ -26,8 +26,8 @@
             'ui.mask',
             'ui.select',
             'totvsHtmlFramework',
-            'totvsDesktop',
-            'totvsMenu'<% if (createCRUD) { %>,
+            'totvsDesktop'<% if (tabPageApp) { %>,
+            'totvsMenu'<% } %><% if (createCRUD) { %>,
             'customer'<% } %><% if (createDashboard) { %>,
             'dashboard'<% } %>
         ]);
