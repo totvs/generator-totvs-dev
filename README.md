@@ -49,19 +49,26 @@ Ao executar o generator algumas perguntas devem ser preenchidas antes da aplica�
  4. **Current version:** Versão do projeto
  5. **Repository:** Repositório que será hospedado o projeto
  6. **Home page:** Home page do projeto
- 7. **Create samples:** Exemplos que serão gerados junto com a aplicação
+ 7. **Single Page Application:** Modelo da aplicação será um SPA (Single Page Application)
+ 8. **Create samples:** Exemplos que serão gerados junto com a aplicação
     - CRUD
     - Dashboard
 
 ## Screenshots
 
-Menu
+CRUD (SPA)
+![SPA][spa-crud]
+
+Dashboard (SPA)
+![SPA][spa-dashboard]
+
+Menu (Tab)
 ![Menu][menu]
 
-CRUD
+CRUD (Tab)
 ![Menu][menu-crud]
 
-Dashboard
+Dashboard (Tab)
 ![Menu][menu-dashboard]
 
 ## Copyright
@@ -78,6 +85,8 @@ Copyright © 2016 TOTVS
 [travis-url]:https://travis-ci.org/devtotvs/generator-totvs-dev
 [daviddm-image]:https://david-dm.org/devtotvs/generator-totvs-dev.svg?theme=shields.io
 [daviddm-url]:https://david-dm.org/devtotvs/generator-totvs-dev
+[spa-crud]:https://raw.githubusercontent.com/devtotvs/generator-totvs-dev/master/screenshots/spa002-crud.png
+[spa-dashboard]:https://raw.githubusercontent.com/devtotvs/generator-totvs-dev/master/screenshots/spa002-dashboard.png
 [menu]:https://raw.githubusercontent.com/devtotvs/generator-totvs-dev/master/screenshots/menu001.png
 [menu-crud]:https://raw.githubusercontent.com/devtotvs/generator-totvs-dev/master/screenshots/menu002-crud.png
 [menu-dashboard]:https://raw.githubusercontent.com/devtotvs/generator-totvs-dev/master/screenshots/menu002-dashboard.png
