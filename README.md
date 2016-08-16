@@ -53,6 +53,7 @@ Ao executar o generator algumas perguntas devem ser preenchidas antes da aplica�
  8. **Create samples:** Exemplos que serão gerados junto com a aplicação
     - CRUD
     - Dashboard
+ 9. **Proxy for install dependencies:** Especifique um proxy se estiver em uma rede fechada
 
 ## Screenshots
 

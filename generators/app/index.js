@@ -80,6 +80,10 @@ module.exports = yeoman.Base.extend({
             message: 'Create samples',
             choices: ['CRUD', 'Dashboard'],
             default: ['CRUD', 'Dashboard']
+        },{
+            type: 'input',
+            name: 'proxy',
+            message: 'Proxy for install dependencies'
         }]).then(function (answers) {
             //console.log(answers);
 
@@ -97,6 +101,9 @@ module.exports = yeoman.Base.extend({
             this.props.minification = answers.minification;*/
             this.props.createCRUD = answers.samples.indexOf('CRUD') >= 0;
             this.props.createDashboard = answers.samples.indexOf('Dashboard') >= 0;
+
+            this.props.proxy = answers.proxy;
+            this.props.useProxy = Boolean(this.props.proxy);
 
         }.bind(this));
     },
