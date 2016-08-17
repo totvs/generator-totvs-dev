@@ -35,6 +35,7 @@
         "bootstrap-datepicker": "^1.6.1",<% if (createDashboard) { %>
         "ngDraggable": "^0.1.8",<% } %>
         "angular-ui-mask": "^1.8.6",
-        "angular-ui-select": "^0.18.1"
+        "angular-ui-select": "^0.18.1",
+        "jquery": "2.1.4"
     }
 }
