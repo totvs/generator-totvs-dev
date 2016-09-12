@@ -36,6 +36,7 @@
         "ngDraggable": "^0.1.8",<% } %>
         "angular-ui-mask": "^1.8.6",
         "angular-ui-select": "^0.18.1",
-        "jquery": "2.1.4"
+        "jquery": "2.1.4",
+		"ngMask": "angular-mask#^3.1.1"
     }
 }

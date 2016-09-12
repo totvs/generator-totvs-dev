@@ -34,14 +34,14 @@
 
 			<fieldset>
 
-				<field
-                    type="input"
+				<totvs-field
+					totvs-input
 					class="col-lg-3 col-md-3 col-sm-3 col-xs-12"
 					ng-model="controller.customer.name"
 					required
 					label="{{ ::'l-name' | i18n : [] : 'js/customers' }}"
                     focus>
-				</field>
+				</totvs-field>
 
 				<totvs-field
                     totvs-datepicker
@@ -51,35 +51,35 @@
                     canclean>
 				</totvs-field>
 
-                <field
-                    type="input"
+                <totvs-field
+                    totvs-input
 					class="col-lg-3 col-md-3 col-sm-3 col-xs-12"
 					ng-model="controller.customer.doc_cpf"
 					label="{{ ::'l-doc-cpf' | i18n : [] : 'js/customers' }}"
-                    ui-mask="999.999.999-99">
-				</field>
+                    t-mask="999.999.999-99">
+				</totvs-field>
 
-				<field
-                    type="input"
+				 <totvs-field
+                    totvs-input
 					class="col-lg-3 col-md-3 col-sm-3 col-xs-12"
 					label="{{ ::'l-doc-rg' | i18n : [] : 'js/customers' }}"
 					ng-model="controller.customer.doc_rg">
-				</field>
+				</totvs-field>
 
-                <field
-                    type="input"
+                <totvs-field
+                    totvs-input
 					class="col-lg-3 col-md-3 col-sm-3 col-xs-12"
 					label="{{ ::'l-email' | i18n : [] : 'js/customers' }}"
 				    ng-model="controller.customer.email">
-				</field>
+				</totvs-field>
 
-				<field
-                    type="input"
+				<totvs-field
+                    totvs-input
 					class="col-lg-3 col-md-3 col-sm-3 col-xs-12"
 					ng-model="controller.customer.phone"
 					label="{{ ::'l-phone' | i18n : [] : 'js/customers' }}"
                     ui-mask="(99) 9999-9999">
-				</field>
+				</totvs-field>
 
                 <totvs-field
                     totvs-datepicker
@@ -103,48 +103,48 @@
 
 				<legend>{{ 'l-address' | i18n : [] : 'js/customers' }}</legend>
 
-				<field
-                    type="input"
+				<totvs-field
+                    totvs-input
 					class="col-lg-6 col-md-6 col-sm-6 col-xs-12"
 					label="{{ ::'l-address-street' | i18n : [] : 'js/customers' }}"
 					ng-model="controller.customer.address_street">
-				</field>
+				</totvs-field>
 
-				<field
-                    type="input"
+				<totvs-field
+                    totvs-input
 					class="col-lg-2 col-md-2 col-sm-2 col-xs-12"
 					label="{{ ::'l-address-number' | i18n : [] : 'js/customers' }}"
 					ng-model="controller.customer.address_number">
-				</field>
+				</totvs-field>
 
-                <field
-                    type="input"
+                <totvs-field
+                    totvs-input
 					class="col-lg-4 col-md-4 col-sm-4 col-xs-12"
 					label="{{ ::'l-address-district' | i18n : [] : 'js/customers' }}"
 					ng-model="controller.customer.address_district">
-				</field>
+				</totvs-field>
 
-				<field
-                    type="input"
+				<totvs-field
+                    totvs-input
                     class="col-lg-4 col-md-4 col-sm-4 col-xs-12"
 					label="{{ ::'l-address-city' | i18n : [] : 'js/customers' }}"
                     ng-model="controller.customer.address_city">
-				</field>
+				</totvs-field>
 
-                <field
-                    type="input"
+                <totvs-field
+                    totvs-input
 					class="col-lg-4 col-md-4 col-sm-4 col-xs-12"
 					ng-model="controller.customer.address_zip"
 					label="{{ ::'l-address-zip' | i18n : [] : 'js/customers' }}"
                     ui-mask="99999-999">
-				</field>
+				</totvs-field>
 
-				<field
-                    type="input"
+				<totvs-field
+                    totvs-input
 					class="col-lg-4 col-md-4 col-sm-4 col-xs-12"
 					label="{{ ::'l-address-complement' | i18n : [] : 'js/customers' }}"
 					ng-model="controller.customer.address_complement">
-				</field>
+				</totvs-field>
 
 			</fieldset>
 
