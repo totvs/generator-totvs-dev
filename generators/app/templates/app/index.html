@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html<% if (!useRequireJS) { %> ng-app="totvsApp"<% } %>>
 <head>
 	<title>TOTVS | <%= title %></title>
@@ -22,6 +22,7 @@
 
     <link rel="stylesheet" href="js/libs/bootstrap/dist/css/bootstrap<% if (minification) { %>.min<% } %>.css">
     <link rel="stylesheet" href="js/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker3<% if (minification) { %>.min<% } %>.css">
+    <link rel="stylesheet" href="js/libs/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch<% if (minification) { %>.min<% } %>.css">
 
     <link rel="stylesheet" href="js/libs/angular-nestable/lib/jquery.nestable.css">
 
@@ -151,7 +152,7 @@
                     </div>
 
                     <div class="col-md-10 col-sm-9 col-xs-8 total-height" id="menu-workspace">
-                        <!-- CONTEۄO DO MENU -->
+                        <!-- CONTEÚDO DO MENU -->
                         <div class="menu-block" id="menu-content">
                             <div id="menu-view" <% if (useUIRouter) { %>ui-view<% } else { %>ng-view<% } %>></div>
                         </div>
@@ -162,7 +163,7 @@
     </div>
 
     <% if (useRequireJS) { %><!-- RequireJs -->
-    <!-- Script de configura褯 do APP, deve ser chamado no HTML antes do RequireJs -->
+    <!-- Script de configuração do APP, deve ser chamado no HTML antes do RequireJs -->
     <script type="text/javascript" src="js/setup/config-app.js"></script>
 
     <script type="text/javascript" src="js/libs/require.js" data-main="js/main" charset="utf8"></script>
@@ -172,6 +173,7 @@
     <script type="text/javascript" src="js/libs/bootstrap/dist/js/bootstrap<% if (minification) { %>.min<% } %>.js"></script>
     <script type="text/javascript" src="js/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker<% if (minification) { %>.min<% } %>.js"></script>
     <script type="text/javascript" src="js/libs/bootstrap-datepicker/dist/locales/bootstrap-datepicker.pt-BR.min.js"></script>
+    <script type="text/javascript" src="js/libs/bootstrap-switch/dist/js/bootstrap-switch<% if (minification) { %>.min<% } %>.js"></script>
 
     <script type="text/javascript" src="js/libs/angular/angular<% if (minification) { %>.min<% } %>.js"></script>
     <script type="text/javascript" src="js/libs/angular-animate/angular-animate<% if (minification) { %>.min<% } %>.js"></script>
@@ -179,6 +181,7 @@
     <script type="text/javascript" src="js/libs/angular-hotkeys/build/hotkeys<% if (minification) { %>.min<% } %>.js"></script>
     <script type="text/javascript" src="js/libs/angular-i18n/angular-locale_pt-br.js"></script>
     <script type="text/javascript" src="js/libs/angular-nestable/src/angular-nestable.js"></script>
+    <script type="text/javascript" src="js/libs/angular-nestable/lib/jquery.nestable.js"></script>
     <script type="text/javascript" src="js/libs/angular-resource/angular-resource<% if (minification) { %>.min<% } %>.js"></script><% if (!useUIRouter) { %>
     <script type="text/javascript" src="js/libs/angular-route/angular-route<% if (minification) { %>.min<% } %>.js"></script><% } %>
     <script type="text/javascript" src="js/libs/angular-sanitize/angular-sanitize<% if (minification) { %>.min<% } %>.js"></script>

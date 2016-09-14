@@ -32,6 +32,7 @@
         "angular-ui-router": "0.2.15",<% } %>
         "AngularJS-Toaster": "angularjs-toaster#^2.0.0",
         "bootstrap": "^3.3.6",
+        "bootstrap-switch": "3.3.2",
         "bootstrap-datepicker": "^1.6.1",<% if (createDashboard) { %>
         "ngDraggable": "^0.1.8",<% } %>
         "angular-ui-mask": "^1.8.6",
