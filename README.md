@@ -1,10 +1,10 @@
-# generator-totvs-dev 
+# generator-totvs-dev
 
-[![NPM version][npm-image]][npm-url] 
-[![Build Status][travis-image]][travis-url] 
+[![NPM version][npm-image]][npm-url]
+[![Build Status][travis-image]][travis-url]
 [![Dependency Status][daviddm-image]][daviddm-url]
 
-> Generator of Totvs Web Developers
+> Generator for Totvs Web Developers
 
 ## Instalação
 

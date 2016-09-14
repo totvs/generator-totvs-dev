@@ -1,7 +1,7 @@
 {
     "name": "generator-totvs-dev",
-    "version": "0.1.6",
-    "description": "Generator of Totvs Web Developers",
+    "version": "0.1.7",
+    "description": "Generator for Totvs Web Developers",
     "homepage": "https://github.com/devtotvs/generator-totvs-dev",
     "author": {
         "name": "TOTVS",
