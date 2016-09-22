@@ -24,7 +24,7 @@ describe('generator-totvs-dev:app', function () {
 
         assetsFiles = [
             'src/app/assets/css/app.less',
-            'src/app/assets/css/app.css',
+            'src/app/assets/css/app.min.css',
             'src/app/assets/img/favicon.ico',
             'src/app/assets/img/loading.gif',
             'src/app/assets/img/totvs.png',

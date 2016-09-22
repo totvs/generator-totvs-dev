@@ -129,8 +129,8 @@ module.exports = yeoman.Base.extend({
                 this.destinationPath('src/app/assets/css/app.less')
             );
             this.fs.copy(
-                this.templatePath('app/assets/css/app.css'),
-                this.destinationPath('src/app/assets/css/app.css')
+                this.templatePath('app/assets/css/app.min.css'),
+                this.destinationPath('src/app/assets/css/app.min.css')
             );
             this.fs.copy(
                 this.templatePath('app/assets/img/favicon.ico'),
