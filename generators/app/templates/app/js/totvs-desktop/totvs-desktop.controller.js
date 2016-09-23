@@ -34,7 +34,8 @@
         'totvsDesktopMenuRecents',
         'totvsDesktopMenuFavorites',
         'totvsDesktopMenuPrograms',
-        'totvsDesktopMenuProcesses'<% } %><% if (tabPageApp) { %>,
+        'totvsDesktopMenuProcesses',
+        'TotvsDesktopSidebar'<% } %><% if (tabPageApp) { %>,
         '$rootScope',
         '$scope',
         '$state',
@@ -49,7 +50,8 @@
         totvsDesktopMenuRecents,
         totvsDesktopMenuFavorites,
         totvsDesktopMenuPrograms,
-        totvsDesktopMenuProcesses<% } %><% if (tabPageApp) { %>,
+        totvsDesktopMenuProcesses,
+        TotvsDesktopSidebar<% } %><% if (tabPageApp) { %>,
         $rootScope,
         $scope,
         $state,
@@ -97,9 +99,9 @@
             self.tabs = TotvsDesktopTabService.addTab('Home', 'home.blank', {}, undefined, tabOnSelect);<% } %>
 
             self.options = [
-                {title:'Config', action: optionAction, icon:'cfg'},
-                {title:'Help', action: optionAction, icon:'hlp'},
-                {title:'Logoff', action: optionAction, icon:'off'}
+                {title: 'Config', action: optionAction, icon:  'cfg'},
+                {title: 'Help', action: optionAction, icon: 'hlp'},
+                {title: 'Logoff', action: optionAction, icon: 'off'}
             ];
 
             // TODO: Load information of server
@@ -110,26 +112,29 @@
             ];<% if (singlePageApp) { %>
 
             // Load List Menu Recents
-            totvsDesktopMenuRecents.getProgramRecents(function(data) {
+            totvsDesktopMenuRecents.getProgramRecents(function (data) {
                 self.recents = angular.copy(data);
             });
 
             // Load List Menu Favorites
-            totvsDesktopMenuFavorites.getProgramFavorites(function(data) {
+            totvsDesktopMenuFavorites.getProgramFavorites(function (data) {
                 self.favorites = angular.copy(data);
             });
 
             // Load List Menu Applications
-            totvsDesktopMenuPrograms.getProgramApplications(function(data) {
+            totvsDesktopMenuPrograms.getProgramApplications(function (data) {
                 self.applications = data;
             });
 
             // Load List Menu Processes
-            totvsDesktopMenuProcesses.getMenuProcesses(function(data) {
+            totvsDesktopMenuProcesses.getMenuProcesses(function (data) {
                 self.processes = data;
             });
 
-            self.selectedMenuGroup = 'favs';<% } %>
+            self.selectedMenuGroup = 'favs';
+
+            // Função para o Menu Responsivo
+            TotvsDesktopSidebar.init();<% } %>
 
         }
 
@@ -190,7 +195,7 @@
             $('#' + app.id).next().slideDown();
         }
 
-        function openMenuProgram (program) {
+        function openMenuProgram(program) {
 
             if (!program) {
                 return;

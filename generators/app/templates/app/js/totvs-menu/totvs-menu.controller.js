@@ -36,11 +36,12 @@
         'totvsMenuRecents',
         'totvsMenuFavorites',
         'totvsMenuPrograms',
-        'totvsMenuProcesses'
+        'totvsMenuProcesses',
+        'TotvsDesktopSidebar'
     ];
 
     function TotvsMenuController($location, $scope, $timeout, i18nFilter,
-        totvsMenuConstant, totvsMenuRecents, totvsMenuFavorites, totvsMenuPrograms, totvsMenuProcesses) {
+        totvsMenuConstant, totvsMenuRecents, totvsMenuFavorites, totvsMenuPrograms, totvsMenuProcesses, TotvsDesktopSidebar) {
 
         // *********************************************************************************
 		// *** Variables
@@ -99,15 +100,18 @@
                 getFavorites();
 
                 // Load List Menu Applications
-                totvsMenuPrograms.getMenuApplications(function(data) {
+                totvsMenuPrograms.getMenuApplications(function (data) {
                     self.applications = data;
                 });
 
                 // Load List Menu Processes
-                totvsMenuProcesses.getMenuProcesses(function(data) {
+                totvsMenuProcesses.getMenuProcesses(function (data) {
                     self.processes = data;
                 });
             }
+
+            // Função para o menu responsivo
+            TotvsDesktopSidebar.init();
         }
 
         // *********************************************************************************
@@ -136,7 +140,7 @@
         function getRecents() {
             initVariables(totvsMenuConstant.menuGroups.RECENTS, 4, i18nFilter('recents'));
 
-            totvsMenuRecents.getProgramRecents(function(data) {
+            totvsMenuRecents.getProgramRecents(function (data) {
                 self.programs = angular.copy(data);
                 updateTotalPrograms();
             });
@@ -145,7 +149,7 @@
         function getFavorites() {
             initVariables(totvsMenuConstant.menuGroups.FAVORITES, 4, i18nFilter('favorites'));
 
-            totvsMenuFavorites.getProgramFavorites(function(data) {
+            totvsMenuFavorites.getProgramFavorites(function (data) {
                 self.programs = angular.copy(data);
                 updateTotalPrograms();
             });
@@ -180,16 +184,16 @@
                 }
             });
 
-            $timeout(function() {
+            $timeout(function () {
                 $('#' + app.id).next().slideDown();
             });
         }
 
         function selectModule(module) {
-            initVariables(
-                totvsMenuConstant.menuGroups.APPLICATIONS, 4, i18nFilter('applications') + ': ' + module.module);
+            initVariables(totvsMenuConstant.menuGroups.APPLICATIONS, 4, i18nFilter('applications') +
+                        ': ' + module.module);
 
-            totvsMenuPrograms.getProgramApplications(module.seq, function(data) {
+            totvsMenuPrograms.getProgramApplications(module.seq, function (data) {
                 self.programs = angular.copy(data);
                 updateTotalPrograms();
 
@@ -203,13 +207,13 @@
                 return;
             }
 
-            initVariables(
-                totvsMenuConstant.menuGroups.PROCESSES, undefined, i18nFilter('processes') + ': ' + prcs.process);
+            initVariables(totvsMenuConstant.menuGroups.PROCESSES, undefined, i18nFilter('processes') +
+                        ': ' + prcs.process);
 
             self.selectedProcess = undefined;
             self.selectedProcess = prcs;
 
-            totvsMenuProcesses.getProgramProcesses(prcs.id, function(data) {
+            totvsMenuProcesses.getProgramProcesses(prcs.id, function (data) {
                 self.programs = angular.copy(data);
             });
 
@@ -222,14 +226,14 @@
         function updateTotalPrograms() {
             self.totalPrograms = [0, 0, 0, 0];
 
-            self.programs.forEach(function (program){
+            self.programs.forEach(function (program) {
                 if (program.type >= 1 && program.type <= 4) {
                     self.totalPrograms[program.type - 1]++;
                 }
             });
         }
 
-        function openMenuProgram (program) {
+        function openMenuProgram(program) {
             if (!program) {
                 return;
             }
