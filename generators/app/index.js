@@ -195,6 +195,11 @@ module.exports = yeoman.Base.extend({
                 this.props
             );
             this.fs.copyTpl(
+                this.templatePath('app/js/totvs-desktop/totvs-desktop-sidebar.service.js'),
+                this.destinationPath('src/app/js/totvs-desktop/totvs-desktop-sidebar.service.js'),
+                this.props
+            );
+            this.fs.copyTpl(
                 this.templatePath('app/js/totvs-desktop/totvs-desktop.controller.js'),
                 this.destinationPath('src/app/js/totvs-desktop/totvs-desktop.controller.js'),
                 this.props

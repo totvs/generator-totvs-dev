@@ -202,6 +202,7 @@
             }
 
             $location.url(program.url);
+			TotvsDesktopSidebar.close();
         }<% } %><% if (tabPageApp) { %>
 
         // *********************************************************************************

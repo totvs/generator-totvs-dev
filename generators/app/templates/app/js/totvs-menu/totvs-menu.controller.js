@@ -78,6 +78,8 @@
 		// *********************************************************************************
 
         function init(cacheController) {
+            // Função para o menu responsivo
+            TotvsDesktopSidebar.init();
 
             if (cacheController) {
 
@@ -93,6 +95,7 @@
                     loadMenu('prcs');
                 }
 
+                TotvsDesktopSidebar.open();
             } else {
                 // Load constants
                 self.menuGroups = totvsMenuConstant.menuGroups;
@@ -109,9 +112,6 @@
                     self.processes = data;
                 });
             }
-
-            // Função para o menu responsivo
-            TotvsDesktopSidebar.init();
         }
 
         // *********************************************************************************
@@ -143,6 +143,7 @@
             totvsMenuRecents.getProgramRecents(function (data) {
                 self.programs = angular.copy(data);
                 updateTotalPrograms();
+                TotvsDesktopSidebar.close();
             });
         }
 
@@ -152,6 +153,7 @@
             totvsMenuFavorites.getProgramFavorites(function (data) {
                 self.programs = angular.copy(data);
                 updateTotalPrograms();
+                TotvsDesktopSidebar.close();
             });
         }
 
@@ -198,6 +200,7 @@
                 updateTotalPrograms();
 
                 self.selectedModule = module;
+                TotvsDesktopSidebar.close();
             });
         }
 
@@ -215,6 +218,7 @@
 
             totvsMenuProcesses.getProgramProcesses(prcs.id, function (data) {
                 self.programs = angular.copy(data);
+                TotvsDesktopSidebar.close();
             });
 
         }
