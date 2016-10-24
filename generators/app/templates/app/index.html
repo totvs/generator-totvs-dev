@@ -164,89 +164,90 @@
 
     <% if (useRequireJS) { %><!-- RequireJs -->
     <!-- Script de configuração do APP, deve ser chamado no HTML antes do RequireJs -->
-    <script type="text/javascript" src="js/setup/config-app.js"></script>
+    <script src="js/setup/config-app.js"></script>
 
-    <script type="text/javascript" src="js/libs/require.js" data-main="js/main" charset="utf8"></script>
+    <script src="js/libs/require.js" data-main="js/main" charset="utf8"></script>
     <% } else { %><!-- Carga dos arquivos JS -->
-    <script type="text/javascript" src="js/libs/jquery/dist/jquery<% if (minification) { %>.min<% } %>.js"></script>
+    <script src="js/libs/jquery/dist/jquery<% if (minification) { %>.min<% } %>.js"></script>
 
-    <script type="text/javascript" src="js/libs/bootstrap/dist/js/bootstrap<% if (minification) { %>.min<% } %>.js"></script>
-    <script type="text/javascript" src="js/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker<% if (minification) { %>.min<% } %>.js"></script>
-    <script type="text/javascript" src="js/libs/bootstrap-datepicker/dist/locales/bootstrap-datepicker.pt-BR.min.js"></script>
-    <script type="text/javascript" src="js/libs/bootstrap-switch/dist/js/bootstrap-switch<% if (minification) { %>.min<% } %>.js"></script>
+    <script src="js/libs/bootstrap/dist/js/bootstrap<% if (minification) { %>.min<% } %>.js"></script>
+    <script src="js/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker<% if (minification) { %>.min<% } %>.js"></script>
+    <script src="js/libs/bootstrap-datepicker/dist/locales/bootstrap-datepicker.pt-BR.min.js"></script>
+    <script src="js/libs/bootstrap-switch/dist/js/bootstrap-switch<% if (minification) { %>.min<% } %>.js"></script>
 
-    <script type="text/javascript" src="js/libs/angular/angular<% if (minification) { %>.min<% } %>.js"></script>
-    <script type="text/javascript" src="js/libs/angular-animate/angular-animate<% if (minification) { %>.min<% } %>.js"></script>
-    <script type="text/javascript" src="js/libs/angular-bootstrap/ui-bootstrap-tpls<% if (minification) { %>.min<% } %>.js"></script>
-    <script type="text/javascript" src="js/libs/angular-hotkeys/build/hotkeys<% if (minification) { %>.min<% } %>.js"></script>
-    <script type="text/javascript" src="js/libs/angular-i18n/angular-locale_pt-br.js"></script>
-    <script type="text/javascript" src="js/libs/angular-nestable/src/angular-nestable.js"></script>
-    <script type="text/javascript" src="js/libs/angular-nestable/lib/jquery.nestable.js"></script>
-    <script type="text/javascript" src="js/libs/angular-resource/angular-resource<% if (minification) { %>.min<% } %>.js"></script><% if (!useUIRouter) { %>
-    <script type="text/javascript" src="js/libs/angular-route/angular-route<% if (minification) { %>.min<% } %>.js"></script><% } %>
-    <script type="text/javascript" src="js/libs/angular-sanitize/angular-sanitize<% if (minification) { %>.min<% } %>.js"></script>
-    <script type="text/javascript" src="js/libs/angular-ui-mask/dist/mask<% if (minification) { %>.min<% } %>.js"></script>
-    <script type="text/javascript" src="js/libs/ngMask/dist/ngMask<% if (minification) { %>.min<% } %>.js"></script><% if (useUIRouter) { %>
-    <script type="text/javascript" src="js/libs/angular-ui-router/release/angular-ui-router<% if (minification) { %>.min<% } %>.js"></script><% } %>
-    <script type="text/javascript" src="js/libs/angular-ui-select/dist/select<% if (minification) { %>.min<% } %>.js"></script>
+    <script src="js/libs/angular/angular<% if (minification) { %>.min<% } %>.js"></script>
+    <script src="js/libs/angular-scroll/angular-scroll<% if (minification) { %>.min<% } %>.js"></script>
+    <script src="js/libs/angular-animate/angular-animate<% if (minification) { %>.min<% } %>.js"></script>
+    <script src="js/libs/angular-bootstrap/ui-bootstrap-tpls<% if (minification) { %>.min<% } %>.js"></script>
+    <script src="js/libs/angular-hotkeys/build/hotkeys<% if (minification) { %>.min<% } %>.js"></script>
+    <script src="js/libs/angular-i18n/angular-locale_pt-br.js"></script>
+    <script src="js/libs/angular-nestable/src/angular-nestable.js"></script>
+    <script src="js/libs/angular-nestable/lib/jquery.nestable.js"></script>
+    <script src="js/libs/angular-resource/angular-resource<% if (minification) { %>.min<% } %>.js"></script><% if (!useUIRouter) { %>
+    <script src="js/libs/angular-route/angular-route<% if (minification) { %>.min<% } %>.js"></script><% } %>
+    <script src="js/libs/angular-sanitize/angular-sanitize<% if (minification) { %>.min<% } %>.js"></script>
+    <script src="js/libs/angular-ui-mask/dist/mask<% if (minification) { %>.min<% } %>.js"></script>
+    <script src="js/libs/ngMask/dist/ngMask<% if (minification) { %>.min<% } %>.js"></script><% if (useUIRouter) { %>
+    <script src="js/libs/angular-ui-router/release/angular-ui-router<% if (minification) { %>.min<% } %>.js"></script><% } %>
+    <script src="js/libs/angular-ui-select/dist/select<% if (minification) { %>.min<% } %>.js"></script>
 
-    <script type="text/javascript" src="js/libs/AngularJS-Toaster/toaster<% if (minification) { %>.min<% } %>.js"></script><% if (createDashboard) { %>
+    <script src="js/libs/AngularJS-Toaster/toaster<% if (minification) { %>.min<% } %>.js"></script><% if (createDashboard) { %>
 
-    <script type="text/javascript" src="js/libs/ngDraggable/ngDraggable.js"></script><% } %>
+    <script src="js/libs/ngDraggable/ngDraggable.js"></script><% } %>
 
-    <script type="text/javascript" src="js/libs/telerik.kendoui/js/kendo.all.min.js"></script>
-    <script type="text/javascript" src="js/libs/telerik.kendoui/js/cultures/kendo.culture.pt.min.js"></script>
-    <script type="text/javascript" src="js/libs/telerik.kendoui/js/cultures/kendo.culture.en.min.js"></script>
-    <script type="text/javascript" src="js/libs/telerik.kendoui/js/cultures/kendo.culture.es.min.js"></script>
+    <script src="js/libs/telerik.kendoui/js/kendo.all.min.js"></script>
+    <script src="js/libs/telerik.kendoui/js/cultures/kendo.culture.pt.min.js"></script>
+    <script src="js/libs/telerik.kendoui/js/cultures/kendo.culture.en.min.js"></script>
+    <script src="js/libs/telerik.kendoui/js/cultures/kendo.culture.es.min.js"></script>
 
-    <script type="text/javascript" src="js/libs/totvs-html-framework/totvs-html-framework.js"></script>
+    <script src="js/libs/totvs-html-framework/totvs-html-framework.js"></script>
 
-    <script type="text/javascript" src="js/totvs-app.module.js"></script>
-    <script type="text/javascript" src="js/totvs-app.config.js"></script>
-    <script type="text/javascript" src="js/totvs-app.route.js"></script><% if (tabPageApp) { %>
+    <script src="js/totvs-app.module.js"></script>
+    <script src="js/totvs-app.config.js"></script>
+    <script src="js/totvs-app.route.js"></script><% if (tabPageApp) { %>
 
     <!-- Menu Tab -->
-    <script type="text/javascript" src="js/totvs-menu/totvs-menu.module.js"></script>
-    <script type="text/javascript" src="js/totvs-menu/totvs-menu.constant.js"></script>
-    <script type="text/javascript" src="js/totvs-menu/totvs-menu-recents.factory.js"></script>
-    <script type="text/javascript" src="js/totvs-menu/totvs-menu-favorites.factory.js"></script>
-    <script type="text/javascript" src="js/totvs-menu/totvs-menu-programs.factory.js"></script>
-    <script type="text/javascript" src="js/totvs-menu/totvs-menu-processes.factory.js"></script>
-    <script type="text/javascript" src="js/totvs-menu/totvs-menu.controller.js"></script><% } %>
+    <script src="js/totvs-menu/totvs-menu.module.js"></script>
+    <script src="js/totvs-menu/totvs-menu.constant.js"></script>
+    <script src="js/totvs-menu/totvs-menu-recents.factory.js"></script>
+    <script src="js/totvs-menu/totvs-menu-favorites.factory.js"></script>
+    <script src="js/totvs-menu/totvs-menu-programs.factory.js"></script>
+    <script src="js/totvs-menu/totvs-menu-processes.factory.js"></script>
+    <script src="js/totvs-menu/totvs-menu.controller.js"></script><% } %>
 
     <!-- Desktop -->
-    <script type="text/javascript" src="js/totvs-desktop/totvs-desktop.module.js"></script><% if (singlePageApp) { %>
-    <script type="text/javascript" src="js/totvs-desktop/totvs-desktop-menu-recents.factory.js"></script>
-    <script type="text/javascript" src="js/totvs-desktop/totvs-desktop-menu-favorites.factory.js"></script>
-    <script type="text/javascript" src="js/totvs-desktop/totvs-desktop-menu-programs.factory.js"></script>
-    <script type="text/javascript" src="js/totvs-desktop/totvs-desktop-menu-processes.factory.js"></script><% } %><% if (tabPageApp) { %>
-    <script type="text/javascript" src="js/totvs-desktop/totvs-desktop-view.service.js"></script>
-    <script type="text/javascript" src="js/totvs-desktop/totvs-desktop-tab.service.js"></script><% } %>
-    <script type="text/javascript" src="js/totvs-desktop/totvs-desktop-sidebar.service.js"></script>
-    <script type="text/javascript" src="js/totvs-desktop/totvs-desktop.controller.js"></script>
-    <script type="text/javascript" src="js/totvs-desktop/totvs-desktop-header.directive.js"></script>
-    <script type="text/javascript" src="js/totvs-desktop/totvs-desktop-tab.directive.js"></script><% if (createCRUD) { %>
+    <script src="js/totvs-desktop/totvs-desktop.module.js"></script><% if (singlePageApp) { %>
+    <script src="js/totvs-desktop/totvs-desktop-menu-recents.factory.js"></script>
+    <script src="js/totvs-desktop/totvs-desktop-menu-favorites.factory.js"></script>
+    <script src="js/totvs-desktop/totvs-desktop-menu-programs.factory.js"></script>
+    <script src="js/totvs-desktop/totvs-desktop-menu-processes.factory.js"></script><% } %><% if (tabPageApp) { %>
+    <script src="js/totvs-desktop/totvs-desktop-view.service.js"></script>
+    <script src="js/totvs-desktop/totvs-desktop-tab.service.js"></script><% } %>
+    <script src="js/totvs-desktop/totvs-desktop-sidebar.service.js"></script>
+    <script src="js/totvs-desktop/totvs-desktop.controller.js"></script>
+    <script src="js/totvs-desktop/totvs-desktop-header.directive.js"></script>
+    <script src="js/totvs-desktop/totvs-desktop-tab.directive.js"></script><% if (createCRUD) { %>
 
     <!-- Customer -->
-    <script type="text/javascript" src="js/customers/customers.module.js"></script>
-    <script type="text/javascript" src="js/customers/customers.route.js"></script>
-    <script type="text/javascript" src="js/customers/customers.factory.js"></script>
-    <script type="text/javascript" src="js/customers/customers-search.controller.js"></script>
-    <script type="text/javascript" src="js/customers/customers-list.controller.js"></script>
-    <script type="text/javascript" src="js/customers/customers-detail.controller.js"></script>
-    <script type="text/javascript" src="js/customers/customers-edit.controller.js"></script><% } %><% if (createDashboard) { %>
+    <script src="js/customers/customers.module.js"></script>
+    <script src="js/customers/customers.route.js"></script>
+    <script src="js/customers/customers.factory.js"></script>
+    <script src="js/customers/customers-search.controller.js"></script>
+    <script src="js/customers/customers-list.controller.js"></script>
+    <script src="js/customers/customers-detail.controller.js"></script>
+    <script src="js/customers/customers-edit.controller.js"></script><% } %><% if (createDashboard) { %>
 
     <!-- Dashboard -->
-    <script type="text/javascript" src="js/dashboard/dashboard.module.js"></script>
-    <script type="text/javascript" src="js/dashboard/dashboard.route.js"></script>
-    <script type="text/javascript" src="js/dashboard/dashboard.factory.js"></script>
-    <script type="text/javascript" src="js/dashboard/dashboard.controller.js"></script>
-    <script type="text/javascript" src="js/dashboard/dashboard-settings.controller.js"></script>
+    <script src="js/dashboard/dashboard.module.js"></script>
+    <script src="js/dashboard/dashboard.route.js"></script>
+    <script src="js/dashboard/dashboard.factory.js"></script>
+    <script src="js/dashboard/dashboard.controller.js"></script>
+    <script src="js/dashboard/dashboard-settings.controller.js"></script>
 
-    <script type="text/javascript" src="js/dashboard/widgets/widget.module.js"></script>
-    <script type="text/javascript" src="js/dashboard/widgets/widget-pie.controller.js"></script>
-    <script type="text/javascript" src="js/dashboard/widgets/widget-table.controller.js"></script>
-    <script type="text/javascript" src="js/dashboard/widgets/widget-area.controller.js"></script><% } %><% } %>
+    <script src="js/dashboard/widgets/widget.module.js"></script>
+    <script src="js/dashboard/widgets/widget-pie.controller.js"></script>
+    <script src="js/dashboard/widgets/widget-table.controller.js"></script>
+    <script src="js/dashboard/widgets/widget-area.controller.js"></script><% } %><% } %>
 
 </body>
 </html>

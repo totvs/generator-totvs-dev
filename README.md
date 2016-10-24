@@ -39,6 +39,14 @@ Após a configuração execute do bower para instalar as dependências manualmen
 bower install
 ```
 
+Se tiver dificuldades em instalar o pacote angular-hotkeys configure seu git para que o mesmo use o protocolo https em vez do protocolo git.
+
+```bash
+git config --global url."https://".insteadOf git://
+```
+
+Lei mais sobre as [configurações do git](https://git-scm.com/docs/git-config) na página oficial.
+
 ## Generator
 
 Ao executar o generator algumas perguntas devem ser preenchidas antes da aplicação ser gerada.
