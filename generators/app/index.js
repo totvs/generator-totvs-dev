@@ -2,8 +2,7 @@
 
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
-var yosay = require('yosay');
-var lodash = require('lodash');
+var _ = require('lodash');
 
 module.exports = yeoman.Base.extend({
 
@@ -24,7 +23,10 @@ module.exports = yeoman.Base.extend({
             type: 'input',
             name: 'name',
             message: 'Your project name',
-            default: 'totvs-menu-html'
+            default: 'totvs-menu-html',
+            filter: function(value) {
+                return _.kebabCase(value);
+            }
         },{
             type: 'input',
             name: 'title',
