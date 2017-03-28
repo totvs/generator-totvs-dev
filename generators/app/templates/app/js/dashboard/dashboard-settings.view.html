@@ -24,20 +24,20 @@
     </totvs-page-navbar>
 
     <totvs-page-content>
-        <div class="row">
+        <totvs-row>
             <div class="col-xs-12">
-                <totvs-page-form>
-
+                <totvs-page-form t-name="frmDashboard">
                     <fieldset>
 
-                        <field type="input" class="col-md-6" ng-model="controller.dashboard.name"
-                            label="Nome" required></field>
+                        <totvs-field totvs-input class="col-md-6" ng-model="controller.dashboard.name"
+                            label="Nome" ng-required="true">
+                        </totvs-field>
 
-                        <field type="input" class="col-md-6" ng-model="controller.dashboard.header"
-                            label="Cabeçalho" required></field>
+                        <totvs-field totvs-input class="col-md-6" ng-model="controller.dashboard.header"
+                            label="Cabeçalho" ng-required="true">
+                        </totvs-field>
 
                     </fieldset>
-
                 </totvs-page-form>
 
                 <div ng-repeat="widget in controller.dashboard.widgets" class="dashboard-portlet-config col-md-12"
@@ -88,6 +88,6 @@
                 </div>
 
             </div>
-        </div>
+        </totvs-row>
     </totvs-page-content>
 </totvs-page>

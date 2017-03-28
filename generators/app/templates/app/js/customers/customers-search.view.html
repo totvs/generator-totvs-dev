@@ -1,23 +1,23 @@
 <totvs-modal-header>{{ 'btn-advanced-search' | i18n }}</totvs-modal-header>
 
 <totvs-modal-body>
-    <div class="row">
+    <totvs-row>
         <form class="form-horizontal" role="form">
 
-            <field type="input" class="col-lg-12" ng-model="controller.advancedSearch.name"
-                label="{{ ::'l-name' | i18n : [] : 'js/customers' }}" canclean></field>
+            <totvs-field totvs-input class="col-lg-6" ng-model="controller.advancedSearch.name"
+                label="{{ ::'l-name' | i18n : [] : 'js/customers' }}" canclean></totvs-field>
 
-            <field type="input" class="col-lg-12" ng-model="controller.advancedSearch.address_street"
-                label="{{ ::'l-address-street' | i18n : [] : 'js/customers' }}" canclean></field>
+            <totvs-field totvs-input class="col-lg-6" ng-model="controller.advancedSearch.doc_cpf"
+                label="{{ ::'l-doc-cpf' | i18n : [] : 'js/customers' }}" t-mask="999.999.999-99" canclean></totvs-field>
+
+            <totvs-field totvs-input class="col-lg-12" ng-model="controller.advancedSearch.address_street"
+                label="{{ ::'l-address-street' | i18n : [] : 'js/customers' }}" canclean></totvs-field>
 
             <totvs-field totvs-date-range class="col-lg-12" ng-model="controller.advancedSearch.birthday"
                 label="{{ ::'l-birthday' | i18n : [] : 'js/customers' }}" canclean></totvs-field>
 
-            <field type="input" class="col-lg-6" ng-model="controller.advancedSearch.doc_cpf"
-                label="{{ ::'l-doc-cpf' | i18n : [] : 'js/customers' }}" ui-mask="999.999.999-99" canclean></field>
-
         </form>
-    </div>
+    </totvs-row>
 </totvs-modal-body>
 
 <totvs-modal-footer>

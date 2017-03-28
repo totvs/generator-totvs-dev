@@ -89,13 +89,13 @@
                     <totvs-editable
                         value="{{ ::customer.email }}"
                         on-complete="controller.applyEdit(editable.newValue, 'email', customer)">
-                        <field
-                            type="input"
+                        <totvs-field
+                            totvs-email 
                             class="col-md-12"
                             ng-model="customer.email"
                             canclean
                             label="{{ ::'l-email' | i18n : [] : 'js/customers' }}">
-                        </field>
+                        </totvs-field>
                     </totvs-editable>
                 </totvs-list-item-info>
 
@@ -103,14 +103,14 @@
                     <totvs-editable
                         value="{{ ::customer.phone | mask:'(99) 9999-9999' }}"
                         on-complete="controller.applyEdit(editable.newValue, 'phone', customer)">
-                        <field
-                            type="input"
+                        <totvs-field
+                            totvs-phone
                             class="col-md-12"
                             ng-model="customer.phone"
                             canclean
                             label="{{ ::'l-phone' | i18n : [] : 'js/customers' }}"
-                            ui-mask="(99) 9999-9999">
-                        </field>
+                            t-mask="(99) 9999-9999">
+                        </totvs-field>
                     </totvs-editable>
                 </totvs-list-item-info>
             </totvs-list-item-content>
