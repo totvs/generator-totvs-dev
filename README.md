@@ -37,7 +37,7 @@ npm install -g http-server
 É importante destacar que o servidor deve ser iniciado na pasta onde está a página inicial index.html
 
 ```bash
- cd exemploSPA\src\app\
+ cd meu-projeto\src\app\
  http-server
 
 Starting up http-server, serving ./
