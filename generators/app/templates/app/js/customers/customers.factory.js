@@ -31,7 +31,7 @@
 
     function customerFactory($totvsresource) {
 
-        var url = 'https://thf.totvs.com.br/sample/api/rest/demo/customers/:id',
+        var url = 'https://thf.totvs.com.br/sample/api/customers/:id',
             factory;
 
         factory = $totvsresource.REST(url, {}, {});
