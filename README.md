@@ -27,6 +27,26 @@ Terceiro, baixe as bibliotecas do [TOTVS HTML Framework](http://tdn.totvs.com/di
 
 Salve os arquivos na pasta ***meu-projeto\src\app\js\libs***.
 
+O THF foi criado para funcionar independente da plataforma de backend, porém caso você queira executar o projeto
+para verificar se ele foi corretamente configurado você pode usar um servidor http como o http-server:
+
+```bash
+npm install -g http-server
+```
+
+É importante destacar que o servidor deve ser iniciado na pasta onde está a página inicial index.html
+
+```bash
+ cd meu-projeto\src\app\
+ http-server
+
+Starting up http-server, serving ./
+Available on:
+  http://127.0.0.1:8080
+```
+
+No seu navegador, acesse http://127.0.0.1:8080.
+
 ## Configurações
 
 Caso não sejam instaladas as dependências de forma automática, verifique se sua rede não exige a configuração do proxy para o Bower, caso tenha dúvidas consulte a página oficial sobre o arquivo [.bowerrc](https://bower.io/docs/config/).
